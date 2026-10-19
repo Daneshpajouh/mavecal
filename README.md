@@ -3,7 +3,7 @@
 How well do six published multiplexed assays of variant effect separate disease-causing from
 harmless missense variants in BRCA1, TP53, PTEN and MSH2, and how much clinical evidence would
 their readouts be worth under ClinGen's OddsPath method? This repository answers that with
-public data, a Snakemake workflow and a pre-registered analysis plan. It is research software;
+public data, a Snakemake workflow and an analysis plan committed before the first result. It is research software;
 nothing here classifies a patient's variant.
 
 ## The question in plain terms
@@ -37,8 +37,9 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
 | PTEN abundance (VAMP-seq) | 108 | 5 | 0.819 (0.713 to 0.920) | not quoted, 5 benign | not quoted, 5 benign |
 | MSH2 6-thioguanine resistance | 112 | 54 | 0.924 (0.871 to 0.967) | PS3_moderate | BS3_moderate |
 
-- Four of the six score sets support moderate-level evidence or better for both readouts. PTEN
-  cannot be calibrated from ClinVar: there are only 3 and 5 benign missense controls.
+- BRCA1 SGE, TP53 and MSH2 support moderate evidence or better for both readouts, BRCA1 HDR
+  supporting-level evidence. PTEN cannot be calibrated from ClinVar: there are only 3 and 5
+  benign missense controls.
 - Against the ClinVar release of January 2018, which predates all six assay papers, the AUC
   falls for every score set that can still be scored: BRCA1 SGE 0.983 to 0.946, BRCA1 HDR 0.861
   to 0.735, TP53 0.960 to 0.912, MSH2 0.924 to 0.807. Part of the main-analysis performance may
@@ -49,7 +50,7 @@ The full results, with intervals, are in [docs/report.md](docs/report.md).
 
 ## Running it
 
-Python 3.12 or later. The workflow reads three ClinVar monthly releases (1.25 GB) and downloads
+Python 3.12 or later. The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
 six MaveDB score sets (8 MB) through the MaveDB API.
 
 ```console
@@ -72,7 +73,8 @@ $ .venv/bin/snakemake --report results/snakemake_report.html
 `data_dir` can also be set with `--config data_dir=/path`, or `data` in the repository root can be
 a symlink to it. On a Slurm cluster use
 `--profile profiles/slurm` after setting the account and partition in that file. The
-container image runs the same workflow:
+container image passed the tests and the offline workflow run (docs/testing.md); the real
+analysis was run in the virtual environment, not in the container. To run it there:
 
 ```console
 $ docker build -t mave-clinvar-calibration:1.0.0 .
