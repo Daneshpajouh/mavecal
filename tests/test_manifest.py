@@ -41,3 +41,29 @@ def test_start_and_end_records(tmp_path: Path) -> None:
     assert e["status"] == "success"
     assert e["summary_table_sha256"] == ABC_SHA256
     assert e["duration_seconds"] >= 0
+
+
+def test_end_manifest_records_the_last_step_count(tmp_path: Path) -> None:
+    results = tmp_path / "results"
+    (results / "tables").mkdir(parents=True)
+    log = tmp_path / "snakemake.log"
+    log.write_text("1 of 79 steps (1%) done\n...\n78 of 79 steps (99%) done\n79 of 79 steps (100%) done\n")
+    end = tmp_path / "end.json"
+    manifest.write_end(end, tmp_path / "absent.json", "success", results, log)
+    assert json.loads(end.read_text())["steps"] == {"done": 79, "total": 79}
+
+
+def test_step_count_is_null_without_a_log_or_progress_line(tmp_path: Path) -> None:
+    assert manifest.steps_done(None) is None
+    assert manifest.steps_done(tmp_path / "absent.log") is None
+    quiet = tmp_path / "quiet.log"
+    quiet.write_text("Building DAG of jobs...\n")
+    assert manifest.steps_done(quiet) is None
+    assert manifest.steps_done([]) is None
+
+
+def test_step_count_reads_a_list_of_logs(tmp_path: Path) -> None:
+    log = tmp_path / "run.log"
+    log.write_text("3 of 8 steps (38%) done\n8 of 8 steps (100%) done\n")
+    assert manifest.steps_done([str(log)]) == {"done": 8, "total": 8}
+    assert manifest.steps_done(str(log)) == {"done": 8, "total": 8}

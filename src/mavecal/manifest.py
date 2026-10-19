@@ -6,8 +6,10 @@ import hashlib
 import json
 import os
 import platform
+import re
 import subprocess
 import time
+from collections.abc import Sequence
 from datetime import UTC, datetime
 from importlib import metadata
 from pathlib import Path
@@ -67,8 +69,34 @@ def write_start(out: Path, config: dict[str, Any], inputs: list[Path], plan: Pat
     out.write_text(json.dumps(record, indent=1, default=str))
 
 
-def write_end(out: Path, start: Path, status: str, results_dir: Path) -> None:
-    """Record the outcome and hash every table and figure the run left in results_dir."""
+STEPS = re.compile(r"(\d+) of (\d+) steps \(\d+%\) done")
+
+
+LogPaths = Path | str | Sequence[Path | str] | None
+
+
+def steps_done(log: LogPaths) -> dict[str, int] | None:
+    """The last 'N of M steps (P%) done' line in the Snakemake log, as done and total.
+
+    Snakemake hands its handlers the log as a path or a list of paths (9.x), or as
+    nothing when it writes no log file; any of these is accepted.
+    """
+    if log is None:
+        return None
+    paths = [Path(log)] if isinstance(log, str | Path) else [Path(p) for p in log]
+    found = [m for p in paths if p.is_file() for m in STEPS.findall(p.read_text(errors="replace"))]
+    if not found:
+        return None
+    done, total = found[-1]
+    return {"done": int(done), "total": int(total)}
+
+
+def write_end(out: Path, start: Path, status: str, results_dir: Path, log: LogPaths = None) -> None:
+    """Record the outcome and hash every table and figure the run left in results_dir.
+
+    log is the Snakemake log path the onsuccess and onerror handlers receive; its last
+    progress line gives the step count, so the count in the README can be checked.
+    """
     begun = json.loads(start.read_text()) if start.exists() else {}
     outputs = sorted(p for sub in ("tables", "figures") for p in (results_dir / sub).glob("*") if p.is_file())
     summary = results_dir / "tables" / "summary.tsv"
@@ -78,6 +106,7 @@ def write_end(out: Path, start: Path, status: str, results_dir: Path) -> None:
         "duration_seconds": round(time.time() - begun["started_epoch"], 1) if "started_epoch" in begun else None,
         "git_commit": begun.get("git_commit"),
         "summary_table_sha256": sha256(summary) if summary.exists() else None,
+        "steps": steps_done(log),
         "outputs": [_file_record(p, Path.cwd()) for p in outputs],
     }
     out.write_text(json.dumps(record, indent=1))
