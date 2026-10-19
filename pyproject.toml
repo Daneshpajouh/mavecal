@@ -9,7 +9,7 @@ description = "Calibrate MaveDB assay scores against ClinVar labels with the Brn
 readme = "README.md"
 license = "Apache-2.0"
 authors = [{ name = "Amir Daneshpajouh" }]
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
   "numpy==2.5.4",
   "pandas==3.0.6",
@@ -42,7 +42,7 @@ mavecal = ["py.typed"]
 
 [tool.ruff]
 line-length = 120
-target-version = "py312"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
