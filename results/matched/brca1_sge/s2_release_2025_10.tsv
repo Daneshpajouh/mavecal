@@ -145,8 +145,3 @@ NM_007294.4(BRCA1):c.65T>C (p.Leu22Ser)	-2.10667578876765	P	3	1	55656	post_mappe
 NM_007294.4(BRCA1):c.53T>G (p.Met18Arg)	-2.44598808427358	P	2	1	531241	post_mapped_genomic
 NM_007294.4(BRCA1):c.53T>C (p.Met18Thr)	-1.8874301625019896	P	3	1	37664	post_mapped_genomic
 NM_007294.4(BRCA1):c.53T>A (p.Met18Lys)	-2.3904806945532404	P	2	1	55559	post_mapped_genomic
-NM_007294.4(BRCA1):c.3G>T (p.Met1Ile)	-1.89730149043368	P	3	1	55072	post_mapped_genomic
-NM_007294.4(BRCA1):c.3G>A (p.Met1Ile)	-2.50212823274764	P	2	1	431194	post_mapped_genomic
-NM_007294.4(BRCA1):c.2T>G (p.Met1Arg)	-2.4815795549735	P	2	1	54746	post_mapped_genomic
-NM_007294.4(BRCA1):c.2T>C (p.Met1Thr)	-1.65656907663554	P	2	1	54745	post_mapped_genomic
-NM_007294.4(BRCA1):c.1A>G (p.Met1Val)	-2.02564472903696	P	2	1	54432	post_mapped_genomic

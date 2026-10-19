@@ -30,11 +30,11 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
 
 | score set | P | B | ROC AUC (95% CI) | abnormal readout | normal readout |
 |---|---|---|---|---|---|
-| BRCA1 saturation genome editing | 151 | 22 | 0.983 (0.952 to 1.000) | PS3_moderate | BS3 |
+| BRCA1 saturation genome editing | 146 | 22 | 0.983 (0.953 to 1.000) | PS3_moderate | BS3 |
 | BRCA1 HDR reporter | 31 | 16 | 0.861 (0.736 to 0.968) | PS3_supporting | BS3_supporting |
 | TP53 nutlin-3 growth | 202 | 74 | 0.960 (0.935 to 0.982) | PS3_moderate | BS3_moderate |
 | PTEN lipid phosphatase | 142 | 3 | 0.965 (3 benign, no interval) | not estimated | not estimated |
-| PTEN abundance (VAMP-seq) | 108 | 5 | 0.819 (5 benign, no interval) | not quoted, 5 benign | not quoted, 5 benign |
+| PTEN abundance (VAMP-seq) | 107 | 5 | 0.824 (5 benign, no interval) | not quoted, 5 benign | not quoted, 5 benign |
 | MSH2 6-thioguanine resistance | 112 | 54 | 0.924 (0.871 to 0.967) | PS3_moderate | BS3_moderate |
 
 - BRCA1 SGE, TP53 and MSH2 support moderate evidence or better for both readouts, BRCA1 HDR
@@ -42,10 +42,10 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
   benign missense controls.
 - Against the ClinVar release of January 2018, which predates all six assay papers, the point
   AUC is lower for every score set that can still be scored, but every 2018 interval overlaps
-  the main one: BRCA1 SGE 0.983 to 0.946 (0.87 to 1.00), BRCA1 HDR 0.861 to 0.735 (0.45 to
+  the main one: BRCA1 SGE 0.983 to 0.944 (0.86 to 1.00), BRCA1 HDR 0.861 to 0.735 (0.45 to
   1.00, which includes 0.5), TP53 0.960 to 0.912 (0.78 to 0.99), MSH2 0.924 to 0.807 (0.69 to
   0.91). Rebuilding labels from submissions made before each paper (S4) shows no drop for BRCA1
-  SGE (0.985) and a drop for MSH2 (0.839, 8 benign controls). Neither check separates
+  SGE (0.984) and a drop for MSH2 (0.839, 8 benign controls). Neither check separates
   circularity from the smaller, older label sets, which also include 1-star records.
 
 The full results, with intervals, are in [docs/report.md](docs/report.md).
@@ -74,7 +74,9 @@ $ .venv/bin/snakemake --report results/snakemake_report.html
 
 From the next release the run records Snakemake's own last progress line in
 `results/run/manifest_end.json` as `"steps": {"done": ..., "total": ...}`, so the step count
-can be checked. The 79 above is from the 1.0.0 run, before this field existed.
+can be checked. The 79 above is from the 1.0.0 run, before this field existed. The committed
+results come from a rerun with `--forcerun filter_clinvar` that reused the six MaveDB
+downloads, so its manifest records 73 of 73 steps (79 less the six `fetch_mavedb` jobs).
 
 `data_dir` can also be set with `--config data_dir=/path`, or `data` in the repository root can be
 a symlink to it. On a Slurm cluster use

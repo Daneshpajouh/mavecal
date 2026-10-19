@@ -1,14 +1,14 @@
 {
- "assay_keys": 4112,
+ "assay_keys": 4111,
  "by_label": {
   "B": 5,
-  "P": 108
+  "P": 107
  },
  "by_method": {
-  "post_mapped_protein": 113
+  "post_mapped_protein": 112
  },
  "discordant_protein_changes": 0,
- "matched": 113,
+ "matched": 112,
  "score_rows": 4409,
  "scoreset": "pten_abundance"
 }

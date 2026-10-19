@@ -29,11 +29,11 @@ benign controls.
 
 | score set | MaveDB URN | P | B |
 |---|---|---|---|
-| brca1_sge | urn:mavedb:00000097-0-2 | 151 | 22 |
+| brca1_sge | urn:mavedb:00000097-0-2 | 146 | 22 |
 | brca1_hdr | urn:mavedb:00000081-a-2 | 31 | 16 |
 | tp53_nutlin | urn:mavedb:00000068-b-1 | 202 | 74 |
 | pten_phosphatase | urn:mavedb:00000054-a-1 | 142 | 3 |
-| pten_abundance | urn:mavedb:00000013-a-1 | 108 | 5 |
+| pten_abundance | urn:mavedb:00000013-a-1 | 107 | 5 |
 | msh2_lof | urn:mavedb:00000050-a-1 | 112 | 54 |
 
 Benign controls are scarce everywhere except TP53 and MSH2, and PTEN has almost none. The
@@ -43,11 +43,11 @@ PTEN numbers below rest on 3 and 5 benign variants and should be read that way.
 
 | score set | AUC (95% CI) | Bonferroni-simultaneous CI | Holm-adjusted p (AUC > 0.5) |
 |---|---|---|---|
-| brca1_sge | 0.983 (0.952 to 1.000) | 0.938 to 1.000 | 5e-13 |
+| brca1_sge | 0.983 (0.953 to 1.000) | 0.940 to 1.000 | 6e-13 |
 | brca1_hdr | 0.861 (0.736 to 0.968) | 0.691 to 0.995 | 9e-05 |
 | tp53_nutlin | 0.960 (0.935 to 0.982) | 0.925 to 0.986 | 3e-31 |
 | pten_phosphatase | 0.965 (3 benign, no interval) | no interval | 0.0007 |
-| pten_abundance | 0.819 (5 benign, no interval) | no interval | 0.007 |
+| pten_abundance | 0.824 (5 benign, no interval) | no interval | 0.006 |
 | msh2_lof | 0.924 (0.871 to 0.967) | 0.844 to 0.976 | 3e-18 |
 
 The simultaneous intervals of the four score sets with at least 10 controls per class all
@@ -62,21 +62,21 @@ strength column is read from the interval bound nearer to 1.
 
 | score set | abnormal P/B | OddsPath abnormal (95% CI) | strength | normal P/B | OddsPath normal (95% CI) | strength |
 |---|---|---|---|---|---|---|
-| brca1_sge | 150/1 | 11.3 (5.64 to 22.8) | PS3_moderate | 1/21 | 0.0144 (0.00688 to 0.0319) | BS3 |
+| brca1_sge | 145/1 | 11.3 (5.63 to 22.8) | PS3_moderate | 1/21 | 0.0149 (0.00711 to 0.0313) | BS3 |
 | brca1_hdr | 24/1 | 6.38 (2.79 to 14.9) | PS3_supporting | 7/15 | 0.283 (0.133 to 0.46) | BS3_supporting |
 | tp53_nutlin | 184/5 | 11.3 (6.41 to 33.6) | PS3_moderate | 18/69 | 0.102 (0.0616 to 0.146) | BS3_moderate |
 | pten_phosphatase | not estimated (3 benign controls; cross-fitting needs 5) | | | | | |
-| pten_abundance | 77/1 | 2.12 (1.05 to 4.57) | not quoted | 31/4 | 0.44 (0.275 to 0.908) | not quoted |
+| pten_abundance | 76/1 | 2.11 (1.03 to 4.56) | not quoted | 31/4 | 0.444 (0.278 to 0.944) | not quoted |
 | msh2_lof | 98/1 | 23.8 (11.3 to 50.1) | PS3_moderate | 14/53 | 0.138 (0.0811 to 0.206) | BS3_moderate |
 
 With the authors' published class boundaries (T2) the results are close for BRCA1 SGE (abnormal
-11.2, normal 0.0144) and MSH2 (23.6 and 0.147). For PTEN, T2 puts no benign control in the
+11.2, normal 0.0149) and MSH2 (23.6 and 0.147). For PTEN, T2 puts no benign control in the
 abnormal class (86/0 phosphatase, 59/0 abundance), so the raw OddsPath is infinite and the
-adjusted value (2.41 and 3.25) is set almost entirely by the one added misclassified control.
+adjusted value (2.41 and 3.28) is set almost entirely by the one added misclassified control.
 That is what 3 to 5 benign controls can support, not a property of the assays.
 
 The added misclassified control weighs most on the abnormal side, where 1 to 5 benign controls
-were observed. The raw estimates are 21.9 (BRCA1 SGE), 12.4 (BRCA1 HDR),
+were observed. The raw estimates are 21.8 (BRCA1 SGE), 12.4 (BRCA1 HDR),
 13.5 (TP53) and 47.3 (MSH2), against 11.3, 6.38, 11.3 and 23.8 after adjustment.
 
 ## Calibration
@@ -85,10 +85,10 @@ Out-of-fold logistic probabilities (reliability plots in `results/figures/`):
 
 | score set | Brier | calibration intercept | calibration slope |
 |---|---|---|---|
-| brca1_sge | 0.014 | 0.06 | 0.88 |
+| brca1_sge | 0.014 | 0.07 | 0.87 |
 | brca1_hdr | 0.158 | 0.17 | 0.75 |
 | tp53_nutlin | 0.062 | 0.00 | 0.97 |
-| pten_abundance | 0.042 | 0.28 | 0.89 |
+| pten_abundance | 0.041 | 0.15 | 0.94 |
 | msh2_lof | 0.083 | 0.01 | 0.93 |
 
 Slopes below 1 mean the out-of-fold probabilities are too extreme; BRCA1 HDR (slope 0.75, 47
@@ -104,11 +104,11 @@ assay here (earliest assay paper online 2018-04-26), at 1 or more stars as fixed
 
 | score set | main | S1 one star | S2 2025-10 | S3 2018-01 | S4 before publication |
 |---|---|---|---|---|---|
-| brca1_sge | 0.983 (0.95 to 1.00; 151/22) | 0.994 (0.98 to 1.00; 208/111) | 0.980 (0.94 to 1.00; 132/19) | 0.946 (0.87 to 1.00; 41/14) | 0.985 (0.95 to 1.00; 41/16) |
+| brca1_sge | 0.983 (0.95 to 1.00; 146/22) | 0.994 (0.98 to 1.00; 201/111) | 0.980 (0.94 to 1.00; 127/19) | 0.944 (0.86 to 1.00; 38/14) | 0.984 (0.95 to 1.00; 39/16) |
 | brca1_hdr | 0.861 (0.74 to 0.97; 31/16) | 0.879 (0.78 to 0.97; 39/34) | 0.846 (0.69 to 0.96; 26/16) | 0.735 (0.45 to 1.00; 11/12) | 0.818 (no interval; 11/6) |
 | tp53_nutlin | 0.960 (0.94 to 0.98; 202/74) | 0.935 (0.91 to 0.96; 224/149) | 0.962 (0.93 to 0.98; 175/71) | 0.912 (0.78 to 0.99; 108/11) | 1.000 (no interval; 12/3) |
 | pten_phosphatase | 0.965 (no interval; 142/3) | 0.946 (no interval; 197/5) | 0.971 (no interval; 116/3) | no benign (69/0) | no benign (5/0) |
-| pten_abundance | 0.819 (no interval; 108/5) | 0.700 (no interval; 151/8) | 0.819 (no interval; 86/5) | no benign (50/0) | no benign (2/0) |
+| pten_abundance | 0.824 (no interval; 107/5) | 0.703 (no interval; 150/8) | 0.826 (no interval; 85/5) | no benign (50/0) | no benign (2/0) |
 | msh2_lof | 0.924 (0.87 to 0.97; 112/54) | 0.943 (0.91 to 0.97; 139/287) | 0.913 (0.85 to 0.96; 100/50) | 0.807 (0.69 to 0.91; 58/20) | 0.839 (no interval; 49/8) |
 
 Cells read AUC (95% interval; pathogenic/benign). No interval where a class has fewer than 10 controls.
@@ -120,7 +120,7 @@ BS3_moderate; TP53 abnormal from PS3_moderate to indeterminate; MSH2 from modera
 supporting on both sides. BRCA1 HDR moves both ways: its abnormal side rises from
 PS3_supporting to PS3_moderate (11 pathogenic and 12 benign controls) and its normal side drops
 from BS3_supporting to indeterminate. The S4 rebuild shows no drop for
-BRCA1 SGE (0.985) and a drop for MSH2 (0.839, 8 benign controls); it leaves TP53 with 3 benign
+BRCA1 SGE (0.984) and a drop for MSH2 (0.839, 8 benign controls); it leaves TP53 with 3 benign
 controls and PTEN with none.
 
 Two explanations fit and this design cannot separate them. Some current labels may rest on the
@@ -136,7 +136,7 @@ will be added when they are). For BRCA1 SGE with the same
 class boundaries, the IGVF Coding Variant Focus Group missense calibration records OddsPath 74.6
 (abnormal) and 0.0168 (normal), and Fayer et al. (2021) record 52.4 and 0.02. For MSH2, the
 IGVF missense calibration records 71.1 and 0.0483, and Scott et al. (2022) 24.9 and 0.043. The
-raw T2 estimates here are 21.6 and 0.0069 (BRCA1 SGE) and 46.8 and 0.136 (MSH2). On the normal side the
+raw T2 estimates here are 21.5 and 0.0072 (BRCA1 SGE) and 46.8 and 0.136 (MSH2). On the normal side the
 strength agrees for BRCA1 SGE (BS3) but not for MSH2 (moderate here, strong in both earlier
 calibrations). The abnormal-side estimates here are lower because the control set
 holds 1 benign variant called abnormal among few benign controls, and the adjustment for a

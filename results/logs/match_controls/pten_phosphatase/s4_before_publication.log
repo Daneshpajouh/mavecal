@@ -1,1 +1,1 @@
-2026-10-19 12:10:21,860 INFO mavecal: pten_phosphatase: {'scoreset': 'pten_phosphatase', 'score_rows': 8681, 'discordant_protein_changes': 0, 'assay_keys': 6153, 'matched': 5, 'by_method': {'post_mapped_protein': 5}, 'by_label': {'P': 5}}
+2026-10-19 13:48:48,210 INFO mavecal: pten_phosphatase: {'scoreset': 'pten_phosphatase', 'score_rows': 8681, 'discordant_protein_changes': 0, 'assay_keys': 6153, 'matched': 5, 'by_method': {'post_mapped_protein': 5}, 'by_label': {'P': 5}}

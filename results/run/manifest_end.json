@@ -1,19 +1,23 @@
 {
  "status": "success",
- "finished_utc": "2026-10-19T19:10:26+00:00",
- "duration_seconds": 72.1,
- "git_commit": "4c676522e828e30cf92bbf265a78328639f30762",
- "summary_table_sha256": "c327f52a35d4f0483ebb4413fb6f4460f243e5b273ea351ea47160071cf1277d",
+ "finished_utc": "2026-10-19T20:48:52+00:00",
+ "duration_seconds": 73.0,
+ "git_commit": "8262a1499aef767d672a4b81e4eaa13a2655149f",
+ "summary_table_sha256": "b4d427f9d4cb2838e825b5bfd0038c0f914657094133cc613dd3daddbbfd7ffd",
+ "steps": {
+  "done": 73,
+  "total": 73
+ },
  "outputs": [
   {
    "path": "results/figures/auc_forest.png",
-   "bytes": 133156,
-   "sha256": "478c762c9a3750f1fb058907dfb0bc68a80110bcfd2c4361735c7f4e973dbd89"
+   "bytes": 132875,
+   "sha256": "eeb253023eae39bd150f8993b26be6a7302d6fcf7e976a2257afcf5a5a79852b"
   },
   {
    "path": "results/figures/auc_forest.svg",
-   "bytes": 146191,
-   "sha256": "78d6752d61531b87b3db0690d42fe66ae5e504123a27facbafd26d1c361623d3"
+   "bytes": 146189,
+   "sha256": "991a65b8b4f2d573a9c32b300b6576fb0440e63a0be727455b1db405582b7e14"
   },
   {
    "path": "results/figures/brca1_hdr.png",
@@ -23,17 +27,17 @@
   {
    "path": "results/figures/brca1_hdr.svg",
    "bytes": 97190,
-   "sha256": "fc181d84b843560b92366a7c7cdde646bb51ed0c234828be4bab7a07e54ebf01"
+   "sha256": "607932b4ab9f163d968220e5e8ee7ac323b007e09b5264460a32aa163a1e9565"
   },
   {
    "path": "results/figures/brca1_sge.png",
-   "bytes": 100998,
-   "sha256": "96d9a0b34fa672bec15c49f74b3dbc662f79e6a99f196a7c2fec8f7bf812d3f2"
+   "bytes": 104382,
+   "sha256": "00c2c9deedc721c0b30a2df20244d870cc96b593ae02655d49af96c36098b9bd"
   },
   {
    "path": "results/figures/brca1_sge.svg",
-   "bytes": 95319,
-   "sha256": "f4f9221f948a8774ce403f96594a8e6270dea567b91a223905f6fd827d218477"
+   "bytes": 98329,
+   "sha256": "d18fc5a7009b4bf836d0e4286da4ff90ee20b55008f6a231b4a91837fd1bf7a9"
   },
   {
    "path": "results/figures/msh2_lof.png",
@@ -43,17 +47,17 @@
   {
    "path": "results/figures/msh2_lof.svg",
    "bytes": 96507,
-   "sha256": "290fbd81108acff89fc36b5bd8cbb1eb14cb766e93b8ca28a42a62743df83c17"
+   "sha256": "6be413f9b9309f3594dd9bd8ee5277661bf772e8cf824163139ffb4e0fcfbf8c"
   },
   {
    "path": "results/figures/pten_abundance.png",
-   "bytes": 103059,
-   "sha256": "7ab184bee8986f1922b736450ee0223935ec59e6d5167b6b8e5cba982a9f4245"
+   "bytes": 102763,
+   "sha256": "5305f5abfbbf0f15f345de4fc1ffb1963adfadb05611db91ee6829b0a58d78d4"
   },
   {
    "path": "results/figures/pten_abundance.svg",
-   "bytes": 99336,
-   "sha256": "25886b6b2a1fecb248a9d6abe982cc802cb2cd3cd69fa70c333e2bbf63c9769c"
+   "bytes": 99311,
+   "sha256": "a7512793579aceadfb5e0a5a5ed01bea4734f773267e68cf63f86cdf70e70d13"
   },
   {
    "path": "results/figures/pten_phosphatase.png",
@@ -63,7 +67,7 @@
   {
    "path": "results/figures/pten_phosphatase.svg",
    "bytes": 89328,
-   "sha256": "3f042a49e047d40bbcd4389f9d424d3ac5eef7295c1dc5b0410ad2e60c7cb8eb"
+   "sha256": "26f63bdf4640d00f8ce8188e280af76eaa6f9cc3cb147adecee5d7c34d3e7ff6"
   },
   {
    "path": "results/figures/tp53_nutlin.png",
@@ -73,17 +77,17 @@
   {
    "path": "results/figures/tp53_nutlin.svg",
    "bytes": 96217,
-   "sha256": "6452ac497c168b88be5628dc14032cd4a92967a2d90c84fa3485a863f38345d6"
+   "sha256": "f7978df08697a5131ee83ea61395f4096f466d510b74c8d98f2bc2057711f065"
   },
   {
    "path": "results/tables/matching.tsv",
    "bytes": 2284,
-   "sha256": "709216a2cbdb9d59478f0c08c74d5fb92cb838d7336d16bb9dffdb525936b5e7"
+   "sha256": "75c14edb61d3c6e9ff4c24260a71acab780ef877a1c8a33d06403903be7808f9"
   },
   {
    "path": "results/tables/summary.tsv",
-   "bytes": 17340,
-   "sha256": "c327f52a35d4f0483ebb4413fb6f4460f243e5b273ea351ea47160071cf1277d"
+   "bytes": 17394,
+   "sha256": "b4d427f9d4cb2838e825b5bfd0038c0f914657094133cc613dd3daddbbfd7ffd"
   }
  ]
 }

@@ -1,1 +1,1 @@
-2026-10-19 12:09:55,071 INFO mavecal: tp53_nutlin: {'scoreset': 'tp53_nutlin', 'score_rows': 8274, 'discordant_protein_changes': 0, 'assay_keys': 7466, 'matched': 246, 'by_method': {'post_mapped_protein': 246}, 'by_label': {'P': 175, 'B': 71}}
+2026-10-19 13:48:26,350 INFO mavecal: tp53_nutlin: {'scoreset': 'tp53_nutlin', 'score_rows': 8274, 'discordant_protein_changes': 0, 'assay_keys': 7447, 'matched': 246, 'by_method': {'post_mapped_protein': 246}, 'by_label': {'P': 175, 'B': 71}}

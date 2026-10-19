@@ -1,1 +1,1 @@
-2026-10-19 12:09:54,637 INFO mavecal: brca1_sge: {'scoreset': 'brca1_sge', 'score_rows': 3893, 'assay_keys': 3893, 'matched': 151, 'by_method': {'post_mapped_genomic': 151}, 'by_label': {'P': 132, 'B': 19}}
+2026-10-19 13:48:24,901 INFO mavecal: brca1_sge: {'scoreset': 'brca1_sge', 'score_rows': 3893, 'assay_keys': 3893, 'matched': 146, 'by_method': {'post_mapped_genomic': 146}, 'by_label': {'P': 127, 'B': 19}}

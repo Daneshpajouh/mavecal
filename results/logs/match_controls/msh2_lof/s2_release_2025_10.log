@@ -1,1 +1,1 @@
-2026-10-19 12:09:53,026 INFO mavecal: msh2_lof: {'scoreset': 'msh2_lof', 'score_rows': 17746, 'discordant_protein_changes': 0, 'assay_keys': 16749, 'matched': 150, 'by_method': {'post_mapped_protein': 150}, 'by_label': {'P': 100, 'B': 50}}
+2026-10-19 13:48:24,780 INFO mavecal: msh2_lof: {'scoreset': 'msh2_lof', 'score_rows': 17746, 'discordant_protein_changes': 0, 'assay_keys': 16733, 'matched': 150, 'by_method': {'post_mapped_protein': 150}, 'by_label': {'P': 100, 'B': 50}}

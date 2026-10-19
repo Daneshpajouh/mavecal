@@ -7,7 +7,8 @@ results.
 ## Unreleased
 
 Leaving out start-loss controls changes the control sets, so under the rule above this is a
-major version. The tables, figures and report numbers are still those of 1.0.0 and need a rerun.
+major version. The rerun of 2026-10-19 regenerated the tables, figures and report numbers; only
+the BRCA1 SGE and PTEN abundance results changed.
 
 - Start-loss changes at Met1 no longer count as missense (ClinVar and MaveDB keys). In the 1.0.0
   run this removes 5 pathogenic BRCA1 SGE controls and 1 pathogenic PTEN abundance control.
