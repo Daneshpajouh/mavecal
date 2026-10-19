@@ -39,8 +39,8 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
 
 - Measured against these ClinVar controls, BRCA1 SGE, TP53 and MSH2 reach moderate evidence
   or better for both readouts, and BRCA1 HDR supporting-level evidence. Whether an assay
-  models the disease mechanism, which ClinGen also requires, is not judged here. PTEN cannot
-  be calibrated from ClinVar: there are only 3 and 5 benign missense controls.
+  models the disease mechanism, which ClinGen also requires, is not judged here. The PTEN
+  score sets are not calibrated: ClinVar gives them only 3 and 5 benign missense controls.
 - Against the ClinVar release of January 2018, which predates all six assay papers, the point
   AUC is lower for every score set that can still be scored, but every 2018 interval overlaps
   the main one: BRCA1 SGE 0.983 to 0.944 (0.86 to 1.00), BRCA1 HDR 0.861 to 0.735 (0.45 to
