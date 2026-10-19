@@ -27,7 +27,7 @@ report:
 	$(SMK) --report results/snakemake_report.html
 
 image:
-	docker build -t mave-clinvar-calibration:1.0.0 .
+	docker build -t mavecal:1.0.0 .
 
 clean-test:
 	rm -rf .tests/integration/data .tests/integration/results

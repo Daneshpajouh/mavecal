@@ -1,5 +1,5 @@
 {
-  "title": "mave-clinvar-calibration: calibrating MaveDB assay scores against ClinVar labels",
+  "title": "mavecal: calibrating MaveDB assay scores against ClinVar labels",
   "upload_type": "software",
   "version": "1.0.0",
   "license": "Apache-2.0",

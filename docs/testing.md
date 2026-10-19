@@ -51,8 +51,8 @@ network and run only in the real workflow.
 The image from `Dockerfile` (python:3.13-slim pinned by digest), built and run on 2026-10-19:
 
 ```console
-$ docker build -t mave-clinvar-calibration:1.0.0 .
-$ docker run --rm --entrypoint sh mave-clinvar-calibration:1.0.0 -c \
+$ docker build -t mavecal:1.0.0 .
+$ docker run --rm --entrypoint sh mavecal:1.0.0 -c \
     'uname -sm; python --version; python -m pytest -q; python -m pytest .tests/unit -q; snakemake --lint'
 Linux aarch64
 Python 3.13.16

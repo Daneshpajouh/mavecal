@@ -1,5 +1,5 @@
 $schema: "https://json-schema.org/draft/2020-12/schema"
-description: Configuration for mave-clinvar-calibration
+description: Configuration for mavecal
 type: object
 properties:
   data_dir: {type: string}

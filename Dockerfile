@@ -6,13 +6,13 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-WORKDIR /opt/mave-clinvar-calibration
+WORKDIR /opt/mavecal
 COPY pyproject.toml README.md ./
 COPY src ./src
 RUN pip install ".[dev]"
 
 COPY . .
-RUN useradd --create-home analyst && chown -R analyst /opt/mave-clinvar-calibration
+RUN useradd --create-home analyst && chown -R analyst /opt/mavecal
 USER analyst
 
 # Mount the data directory and pass -e MAVECAL_DATA_DIR=/data (see README).
