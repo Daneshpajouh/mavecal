@@ -32,7 +32,11 @@ def _file_record(path: Path, base: Path) -> dict[str, Any]:
 
 
 def _git(*args: str) -> str:
-    res = subprocess.run(["git", *args], capture_output=True, text=True, check=False)
+    try:
+        res = subprocess.run(["git", *args], capture_output=True, text=True, check=False)
+    except FileNotFoundError:
+        # The container image has no git and no .git directory.
+        return "unavailable"
     return res.stdout.strip()
 
 
@@ -53,7 +57,7 @@ def write_start(out: Path, config: dict[str, Any], inputs: list[Path], plan: Pat
         "started_utc": datetime.now(UTC).isoformat(timespec="seconds"),
         "started_epoch": time.time(),
         "git_commit": _git("rev-parse", "HEAD"),
-        "git_uncommitted_changes": bool(_git("status", "--porcelain", "--untracked-files=no")),
+        "git_uncommitted_changes": _git("status", "--porcelain", "--untracked-files=no") not in ("", "unavailable"),
         "analysis_plan": _file_record(plan, Path.cwd()),
         "versions": _versions(),
         "config": config,
