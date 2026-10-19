@@ -20,4 +20,4 @@ text), `level` (`protein` or `nucleotide`), `transcript` (RefSeq accession witho
 none on MaveDB).
 
 `.tests/integration/config/` holds a configuration that runs the whole workflow on the tiny
-fixtures in `tests/fixtures/` without network access.
+fixtures in `tests/data/` without network access.

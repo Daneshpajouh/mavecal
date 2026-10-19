@@ -51,8 +51,13 @@ def calibration_stats(prob: ArrayLike, labels: ArrayLike) -> dict[str, float]:
     """Brier score, and intercept and slope of a logistic recalibration on logit(p)."""
     p = np.clip(np.asarray(prob, dtype=float), 1e-6, 1 - 1e-6)
     y = np.asarray(labels, dtype=float)
-    a, b = fit_logistic(np.log(p / (1 - p)), y, ridge=0.0)
-    return {"brier": float(np.mean((p - y) ** 2)), "cal_intercept": a, "cal_slope": b}
+    brier = float(np.mean((p - y) ** 2))
+    try:
+        a, b = fit_logistic(np.log(p / (1 - p)), y, ridge=0.0)
+    except np.linalg.LinAlgError:
+        # Perfectly separated out-of-fold probabilities have no finite recalibration slope.
+        return {"brier": brier, "cal_intercept": float("nan"), "cal_slope": float("nan")}
+    return {"brier": brier, "cal_intercept": a, "cal_slope": b}
 
 
 def reliability_bins(prob: ArrayLike, labels: ArrayLike, n_bins: int = 10) -> list[dict[str, float]]:

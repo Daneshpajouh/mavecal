@@ -34,7 +34,8 @@ def roc_points(oriented: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndar
 
 def _save(fig: Figure, out_png: Path, out_svg: Path) -> None:
     fig.savefig(out_png, dpi=150, bbox_inches="tight")
-    fig.savefig(out_svg, bbox_inches="tight")
+    # No date in the SVG metadata, so reruns produce identical files.
+    fig.savefig(out_svg, bbox_inches="tight", metadata={"Date": None})
     plt.close(fig)
 
 

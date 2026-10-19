@@ -13,7 +13,7 @@ rule scoreset_figure:
         ),
         svg=f"{RES}/figures/{{scoreset}}.svg",
     log:
-        "logs/scoreset_figure/{scoreset}.log",
+        f"{RES}/logs/scoreset_figure/{{scoreset}}.log",
     conda:
         "../envs/analysis.yaml"
     params:
@@ -34,7 +34,7 @@ rule forest_figure:
         ),
         svg=f"{RES}/figures/auc_forest.svg",
     log:
-        "logs/forest_figure.log",
+        f"{RES}/logs/forest_figure.log",
     conda:
         "../envs/analysis.yaml"
     script:

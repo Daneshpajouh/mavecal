@@ -7,9 +7,9 @@ rule match_controls:
         table=f"{RES}/matched/{{scoreset}}/{{analysis}}.tsv",
         stats=f"{RES}/matched/{{scoreset}}/{{analysis}}.match.json",
     log:
-        "logs/match_controls/{scoreset}/{analysis}.log",
+        f"{RES}/logs/match_controls/{{scoreset}}/{{analysis}}.log",
     benchmark:
-        "benchmarks/match_controls/{scoreset}/{analysis}.tsv"
+        f"{RES}/benchmarks/match_controls/{{scoreset}}/{{analysis}}.tsv"
     conda:
         "../envs/analysis.yaml"
     params:
@@ -27,9 +27,9 @@ rule evaluate:
         variants=f"{RES}/metrics/{{scoreset}}/{{analysis}}.variants.tsv",
         bins=f"{RES}/metrics/{{scoreset}}/{{analysis}}.reliability.tsv",
     log:
-        "logs/evaluate/{scoreset}/{analysis}.log",
+        f"{RES}/logs/evaluate/{{scoreset}}/{{analysis}}.log",
     benchmark:
-        "benchmarks/evaluate/{scoreset}/{analysis}.tsv"
+        f"{RES}/benchmarks/evaluate/{{scoreset}}/{{analysis}}.tsv"
     conda:
         "../envs/analysis.yaml"
     params:
@@ -64,9 +64,9 @@ rule aggregate:
             category="Tables",
         ),
     log:
-        "logs/aggregate.log",
+        f"{RES}/logs/aggregate.log",
     benchmark:
-        "benchmarks/aggregate.tsv"
+        f"{RES}/benchmarks/aggregate.tsv"
     conda:
         "../envs/analysis.yaml"
     script:

@@ -1,5 +1,9 @@
+import os
+import sys
+
 from snakemake.utils import min_version, validate
 import pandas as pd
+from pathlib import Path
 
 min_version("9.0")
 
@@ -14,7 +18,7 @@ SCORESETS = pd.read_csv(
 ).set_index("id", drop=False)
 validate(SCORESETS, "schemas/scoresets.schema.yaml")
 
-DATA = config["data_dir"]
+DATA = os.environ.get("MAVECAL_DATA_DIR", config["data_dir"])
 RES = config["results_dir"]
 ANALYSES = list(config["analyses"])
 
@@ -26,6 +30,12 @@ wildcard_constraints:
 
 
 report: "report/workflow.rst"
+
+
+sys.path.insert(0, os.path.join(workflow.basedir, "..", "src"))
+from mavecal import manifest  # noqa: E402
+
+RUN_DIR = f"{RES}/run"
 
 
 include: "rules/common.smk"
@@ -43,3 +53,31 @@ rule all:
 localrules:
     fetch_mavedb,
     aggregate,
+
+
+onstart:
+    manifest.write_start(
+        Path(RUN_DIR) / "manifest_start.json",
+        config,
+        manifest_inputs(),
+        Path(workflow.basedir).parent / "docs" / "analysis_plan.md",
+        Path(DATA),
+    )
+
+
+onsuccess:
+    manifest.write_end(
+        Path(RUN_DIR) / "manifest_end.json",
+        Path(RUN_DIR) / "manifest_start.json",
+        "success",
+        Path(RES),
+    )
+
+
+onerror:
+    manifest.write_end(
+        Path(RUN_DIR) / "manifest_end.json",
+        Path(RUN_DIR) / "manifest_start.json",
+        "error",
+        Path(RES),
+    )

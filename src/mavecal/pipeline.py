@@ -72,6 +72,9 @@ def match(
     out_stats: Path,
 ) -> None:
     raw = pd.read_csv(scores)
+    needed = {"scores.score", "hgvs_nt", "mavedb.post_mapped_hgvs_g", "mavedb.post_mapped_hgvs_p"}
+    if missing := sorted(needed - set(raw.columns)):
+        raise ValueError(f"{scores}: MaveDB export lacks columns {missing}; was it fetched with the mavedb namespace?")
     cv = labelled_variants(variants, analysis["labels"], row["published"], submissions)
     stats: dict[str, Any] = {"scoreset": row["id"], "score_rows": len(raw)}
     if row["level"] == "protein":

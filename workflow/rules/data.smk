@@ -3,9 +3,9 @@ rule fetch_mavedb:
         scores=f"{DATA}/mavedb/{{scoreset}}/scores.csv",
         metadata=f"{DATA}/mavedb/{{scoreset}}/metadata.json",
     log:
-        "logs/fetch_mavedb/{scoreset}.log",
+        f"{RES}/logs/fetch_mavedb/{{scoreset}}.log",
     benchmark:
-        "benchmarks/fetch_mavedb/{scoreset}.tsv"
+        f"{RES}/benchmarks/fetch_mavedb/{{scoreset}}.tsv"
     conda:
         "../envs/analysis.yaml"
     resources:
@@ -23,13 +23,13 @@ rule fetch_mavedb:
 
 rule filter_clinvar:
     input:
-        lambda wc: config["clinvar"][wc.release]["variant_summary"],
+        clinvar_file("variant_summary"),
     output:
-        f"{DATA}/clinvar/variants_{{release}}.tsv.gz",
+        f"{DATA}/interim/variants_{{release}}.tsv.gz",
     log:
-        "logs/filter_clinvar/{release}.log",
+        f"{RES}/logs/filter_clinvar/{{release}}.log",
     benchmark:
-        "benchmarks/filter_clinvar/{release}.tsv"
+        f"{RES}/benchmarks/filter_clinvar/{{release}}.tsv"
     conda:
         "../envs/analysis.yaml"
     resources:
@@ -43,14 +43,14 @@ rule filter_clinvar:
 
 rule filter_submissions:
     input:
-        submissions=lambda wc: config["clinvar"][wc.release]["submission_summary"],
-        variants=f"{DATA}/clinvar/variants_{{release}}.tsv.gz",
+        submissions=clinvar_file("submission_summary"),
+        variants=f"{DATA}/interim/variants_{{release}}.tsv.gz",
     output:
-        f"{DATA}/clinvar/submissions_{{release}}.tsv.gz",
+        f"{DATA}/interim/submissions_{{release}}.tsv.gz",
     log:
-        "logs/filter_submissions/{release}.log",
+        f"{RES}/logs/filter_submissions/{{release}}.log",
     benchmark:
-        "benchmarks/filter_submissions/{release}.tsv"
+        f"{RES}/benchmarks/filter_submissions/{{release}}.tsv"
     conda:
         "../envs/analysis.yaml"
     resources:

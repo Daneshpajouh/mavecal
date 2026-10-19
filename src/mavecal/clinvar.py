@@ -81,6 +81,9 @@ def load_variant_summary(path: Path, genes: Iterable[str], chunksize: int = 400_
     """
     wanted = set(genes)
     header = pd.read_csv(path, sep="\t", nrows=0).columns
+    missing = sorted(set(VS_COLUMNS[:9]) - set(header))
+    if missing:
+        raise ValueError(f"{path}: not a ClinVar variant_summary file, missing columns {missing}")
     usecols = [c for c in VS_COLUMNS if c in header]
     parts: list[pd.DataFrame] = []
     for chunk in pd.read_csv(path, sep="\t", usecols=usecols, dtype=str, chunksize=chunksize, low_memory=False):
