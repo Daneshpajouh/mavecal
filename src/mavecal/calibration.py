@@ -10,25 +10,39 @@ from .stats import stratified_folds
 FloatArray = NDArray[np.float64]
 
 
+class NotConverged(ArithmeticError):
+    """Newton-Raphson did not reach a finite optimum within n_iter steps."""
+
+
 def fit_logistic(x: ArrayLike, y: ArrayLike, ridge: float = 1e-3, n_iter: int = 100) -> tuple[float, float]:
     """Newton-Raphson for P(y=1) = 1 / (1 + exp(-(a + b x))).
 
     The small ridge on b keeps the slope finite when the classes separate perfectly,
-    which happens in the smaller score sets.
+    which happens in the smaller score sets. Without a ridge, separated data have no
+    finite optimum: the slope grows each step. Raises NotConverged when the steps
+    have not settled after n_iter iterations or the estimate is not finite, so a
+    caller never reads the last iterate as a fitted value.
     """
     xv = np.asarray(x, dtype=float)
     yv = np.asarray(y, dtype=float)
     design = np.column_stack([np.ones_like(xv), xv])
     beta = np.zeros(2)
     penalty = np.diag([0.0, ridge])
-    for _ in range(n_iter):
-        p = 1.0 / (1.0 + np.exp(-(design @ beta)))
-        grad = design.T @ (yv - p) - penalty @ beta
-        hess = design.T @ (design * (p * (1 - p))[:, None]) + penalty
-        step = np.linalg.solve(hess, grad)
-        beta = beta + step
-        if float(np.max(np.abs(step))) < 1e-10:
-            break
+    converged = False
+    with np.errstate(over="ignore", invalid="ignore"):
+        for _ in range(n_iter):
+            p = 1.0 / (1.0 + np.exp(-(design @ beta)))
+            grad = design.T @ (yv - p) - penalty @ beta
+            hess = design.T @ (design * (p * (1 - p))[:, None]) + penalty
+            step = np.linalg.solve(hess, grad)
+            beta = beta + step
+            if not np.all(np.isfinite(beta)):
+                break
+            if float(np.max(np.abs(step))) < 1e-10:
+                converged = True
+                break
+    if not converged:
+        raise NotConverged(f"no finite optimum after {n_iter} Newton steps")
     return float(beta[0]), float(beta[1])
 
 
@@ -54,7 +68,7 @@ def calibration_stats(prob: ArrayLike, labels: ArrayLike) -> dict[str, float]:
     brier = float(np.mean((p - y) ** 2))
     try:
         a, b = fit_logistic(np.log(p / (1 - p)), y, ridge=0.0)
-    except np.linalg.LinAlgError:
+    except (np.linalg.LinAlgError, NotConverged):
         # Perfectly separated out-of-fold probabilities have no finite recalibration slope.
         return {"brier": brier, "cal_intercept": float("nan"), "cal_slope": float("nan")}
     return {"brier": brier, "cal_intercept": a, "cal_slope": b}
