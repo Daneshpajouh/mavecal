@@ -21,7 +21,7 @@ reads 89.0; the plan already gave 0.89). No analysis in the plan was dropped or 
 - OddsPath reproduces the worked example in Brnich et al. (2019): 5 pathogenic and 6 benign
   controls, one benign indeterminate, gives 35/6 = 5.83, PS3_moderate, as the paper states.
 - Every boundary of the Table 3 mapping is tested on both sides.
-- The 63 pytest tests and 8 rule tests are described in [testing.md](testing.md).
+- The 74 pytest tests and 8 rule tests are described in [testing.md](testing.md).
 
 ## Checks on the data and joins
 
@@ -31,7 +31,9 @@ reads 89.0; the plan already gave 0.89). No analysis in the plan was dropped or 
   BRCA1 SGE rows without a genomic mapping matched no missense control.
 - Matching counts were identical in the runs of 11:41 and 11:58 Pacific, and the summary table
   had the same SHA-256 (`c327f52a...`) after the 12:06 aggregation and after two full reruns at
-  12:08 and 12:09 that re-downloaded every MaveDB score set.
+  12:08 and 12:09 that re-downloaded every MaveDB score set. The rerun of 13:48 Pacific, after
+  start-loss variants left the controls, gives `b4d427f9...`; only the BRCA1 SGE and PTEN
+  abundance rows differ.
 
 ## Against published calibrations
 

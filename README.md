@@ -52,7 +52,7 @@ The full results, with intervals, are in [docs/report.md](docs/report.md).
 
 ## Running it
 
-Python 3.12 or later. The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
+Python 3.13 or later. The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
 six MaveDB score sets (8 MB) through the MaveDB API.
 
 ```console

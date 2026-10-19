@@ -46,11 +46,11 @@ variants only (five-fold cross-fitting).</li>
 stood in January 2018, before any of the six assays was published.</li></ul>""",
     """<h2>Six assays, four genes</h2>
 <table><tr><th>assay</th><th>pathogenic</th><th>benign</th></tr>
-<tr><td>BRCA1 genome editing</td><td>151</td><td>22</td></tr>
+<tr><td>BRCA1 genome editing</td><td>146</td><td>22</td></tr>
 <tr><td>BRCA1 DNA repair reporter</td><td>31</td><td>16</td></tr>
 <tr><td>TP53 cell growth</td><td>202</td><td>74</td></tr>
 <tr><td>PTEN enzyme activity</td><td>142</td><td>3</td></tr>
-<tr><td>PTEN protein abundance</td><td>108</td><td>5</td></tr>
+<tr><td>PTEN protein abundance</td><td>107</td><td>5</td></tr>
 <tr><td>MSH2 drug resistance</td><td>112</td><td>54</td></tr></table>
 <p>Known benign variants are scarce. For PTEN there are too few to calibrate anything.</p>""",
     f"""<h2>All six separate the known variants</h2>
@@ -66,7 +66,7 @@ stood in January 2018, before any of the six assays was published.</li></ul>""",
 <p class="note">Levels read from the cautious end of each 95% interval.</p>""",
     """<h2>Against 2018 labels, every assay scores lower</h2>
 <table><tr><th>assay</th><th>AUC, 2026 labels</th><th>AUC, 2018 labels</th></tr>
-<tr><td>BRCA1 genome editing</td><td>0.983</td><td>0.946</td></tr>
+<tr><td>BRCA1 genome editing</td><td>0.983</td><td>0.944</td></tr>
 <tr><td>BRCA1 DNA repair reporter</td><td>0.861</td><td>0.735</td></tr>
 <tr><td>TP53 cell growth</td><td>0.960</td><td>0.912</td></tr>
 <tr><td>MSH2 drug resistance</td><td>0.924</td><td>0.807</td></tr></table>
