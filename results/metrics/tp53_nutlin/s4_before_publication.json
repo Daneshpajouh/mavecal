@@ -1,0 +1,13 @@
+{
+ "auc": 1.0,
+ "auc_hi": 1.0,
+ "auc_hi_simultaneous": 1.0,
+ "auc_lo": 1.0,
+ "auc_lo_simultaneous": 1.0,
+ "n_benign": 3,
+ "n_pathogenic": 12,
+ "p_one_sided": 0.002197802197802198,
+ "small": true,
+ "status": "ok",
+ "t1_status": "too few controls for cross-fitting"
+}

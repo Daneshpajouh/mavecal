@@ -1,0 +1,126 @@
+{
+ "started_utc": "2026-10-19T19:09:14+00:00",
+ "started_epoch": 1792436954.713213,
+ "git_commit": "4c676522e828e30cf92bbf265a78328639f30762",
+ "git_uncommitted_changes": false,
+ "analysis_plan": {
+  "path": "docs/analysis_plan.md",
+  "bytes": 7969,
+  "sha256": "30246cf38de8f2acfcea9dc5ab54dd85f73c6dcf03d48680e71ad055ca7c87b6"
+ },
+ "versions": {
+  "python": "3.13.9",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "snakemake": "9.27.0",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "scipy": "1.18.1",
+  "matplotlib": "3.11.2",
+  "requests": "2.34.2",
+  "mavecal": "1.0.0"
+ },
+ "config": {
+  "data_dir": "data",
+  "results_dir": "results",
+  "scoresets": "config/scoresets.tsv",
+  "clinvar": {
+   "2026-10": {
+    "variant_summary": "clinvar_releases/variant_summary_2026-10.txt.gz",
+    "submission_summary": "clinvar_releases/submission_summary_2026-10.txt.gz"
+   },
+   "2025-10": {
+    "variant_summary": "clinvar_releases/variant_summary_2025-10.txt.gz"
+   },
+   "2018-01": {
+    "variant_summary": "clinvar_releases/variant_summary_2018-01.txt.gz"
+   }
+  },
+  "analyses": {
+   "main": {
+    "release": "2026-10",
+    "min_stars": 2,
+    "labels": "aggregate"
+   },
+   "s1_one_star": {
+    "release": "2026-10",
+    "min_stars": 1,
+    "labels": "aggregate"
+   },
+   "s2_release_2025_10": {
+    "release": "2025-10",
+    "min_stars": 2,
+    "labels": "aggregate"
+   },
+   "s3_release_2018_01": {
+    "release": "2018-01",
+    "min_stars": 1,
+    "labels": "aggregate"
+   },
+   "s4_before_publication": {
+    "release": "2026-10",
+    "min_stars": 2,
+    "labels": "before_publication"
+   }
+  },
+  "statistics": {
+   "n_boot": 2000,
+   "seed": 20261019,
+   "n_folds": 5,
+   "min_per_class_threshold": 5,
+   "small_class": 10
+  }
+ },
+ "inputs": [
+  {
+   "path": "clinvar_releases/variant_summary_2026-10.txt.gz",
+   "bytes": 450727547,
+   "sha256": "a6a58df4d9049c9187a79a8fb4e70f1f3b5550e1708c6c74b7be0b268f5032da"
+  },
+  {
+   "path": "clinvar_releases/submission_summary_2026-10.txt.gz",
+   "bytes": 394172714,
+   "sha256": "c93758c972fbeb958b49aa560a374bdaf5c57cc4f159644a19bed88200a870ac"
+  },
+  {
+   "path": "clinvar_releases/variant_summary_2025-10.txt.gz",
+   "bytes": 384432958,
+   "sha256": "b99920190c2eb00382cf9ec154442bb83fe5a14a397f93e6db22c8fda094fc77"
+  },
+  {
+   "path": "clinvar_releases/variant_summary_2018-01.txt.gz",
+   "bytes": 25120853,
+   "sha256": "9e81416ea144a1c05eec15198cc42d15ab808193a906a3ff3c67d78dd0e17fb1"
+  },
+  {
+   "path": "mavedb/brca1_sge/scores.csv",
+   "bytes": 717224,
+   "sha256": "570993a0ef65f4d421669de575a9d60580af3eb5f1f0de5ea153cd93db892996"
+  },
+  {
+   "path": "mavedb/brca1_hdr/scores.csv",
+   "bytes": 455542,
+   "sha256": "be8497ba3d9ae8798c0800385d1bad9c7c788776fafbe7d03ed4d78bfa77c4be"
+  },
+  {
+   "path": "mavedb/tp53_nutlin/scores.csv",
+   "bytes": 1341613,
+   "sha256": "496efde49b8b5efb76af408f715350eeb342342bf3ef7f759d70c6490f48a0e0"
+  },
+  {
+   "path": "mavedb/pten_phosphatase/scores.csv",
+   "bytes": 1925503,
+   "sha256": "af12f0cb0061d3c00f8f42edffa859e8a5c202c0e3d279b8fe27adc1083efd4a"
+  },
+  {
+   "path": "mavedb/pten_abundance/scores.csv",
+   "bytes": 708812,
+   "sha256": "68edaae8ce48a270d9b82d87122f590691397af02ef55baf7326544cbce72b05"
+  },
+  {
+   "path": "mavedb/msh2_lof/scores.csv",
+   "bytes": 2883100,
+   "sha256": "6625594063e5812708e50da0ce5bd52ec4368c9b379e778d03a8fe3a24875a03"
+  }
+ ],
+ "inputs_missing": []
+}

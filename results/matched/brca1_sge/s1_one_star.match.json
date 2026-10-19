@@ -1,0 +1,13 @@
+{
+ "assay_keys": 3893,
+ "by_label": {
+  "B": 111,
+  "P": 208
+ },
+ "by_method": {
+  "post_mapped_genomic": 319
+ },
+ "matched": 319,
+ "score_rows": 3893,
+ "scoreset": "brca1_sge"
+}

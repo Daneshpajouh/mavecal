@@ -1,0 +1,14 @@
+{
+ "assay_keys": 7466,
+ "by_label": {
+  "B": 74,
+  "P": 202
+ },
+ "by_method": {
+  "post_mapped_protein": 276
+ },
+ "discordant_protein_changes": 0,
+ "matched": 276,
+ "score_rows": 8274,
+ "scoreset": "tp53_nutlin"
+}

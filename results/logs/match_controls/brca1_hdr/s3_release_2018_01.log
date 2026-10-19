@@ -1,0 +1,1 @@
+2026-10-19 12:09:44,738 INFO mavecal: brca1_hdr: {'scoreset': 'brca1_hdr', 'score_rows': 2820, 'discordant_protein_changes': 0, 'assay_keys': 2749, 'matched': 23, 'by_method': {'post_mapped_protein': 23}, 'by_label': {'B': 12, 'P': 11}}

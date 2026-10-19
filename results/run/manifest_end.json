@@ -1,0 +1,89 @@
+{
+ "status": "success",
+ "finished_utc": "2026-10-19T19:10:26+00:00",
+ "duration_seconds": 72.1,
+ "git_commit": "4c676522e828e30cf92bbf265a78328639f30762",
+ "summary_table_sha256": "c327f52a35d4f0483ebb4413fb6f4460f243e5b273ea351ea47160071cf1277d",
+ "outputs": [
+  {
+   "path": "results/figures/auc_forest.png",
+   "bytes": 133156,
+   "sha256": "478c762c9a3750f1fb058907dfb0bc68a80110bcfd2c4361735c7f4e973dbd89"
+  },
+  {
+   "path": "results/figures/auc_forest.svg",
+   "bytes": 146191,
+   "sha256": "78d6752d61531b87b3db0690d42fe66ae5e504123a27facbafd26d1c361623d3"
+  },
+  {
+   "path": "results/figures/brca1_hdr.png",
+   "bytes": 104684,
+   "sha256": "011343ab6347f22487d475089744a96dbb581d37bb1eba9c68f14a50b0bf52db"
+  },
+  {
+   "path": "results/figures/brca1_hdr.svg",
+   "bytes": 97190,
+   "sha256": "fc181d84b843560b92366a7c7cdde646bb51ed0c234828be4bab7a07e54ebf01"
+  },
+  {
+   "path": "results/figures/brca1_sge.png",
+   "bytes": 100998,
+   "sha256": "96d9a0b34fa672bec15c49f74b3dbc662f79e6a99f196a7c2fec8f7bf812d3f2"
+  },
+  {
+   "path": "results/figures/brca1_sge.svg",
+   "bytes": 95319,
+   "sha256": "f4f9221f948a8774ce403f96594a8e6270dea567b91a223905f6fd827d218477"
+  },
+  {
+   "path": "results/figures/msh2_lof.png",
+   "bytes": 103799,
+   "sha256": "a0a955f91f01bfb2aabc05ab8747320deaa062f25a15d0466a873d95775c4ea0"
+  },
+  {
+   "path": "results/figures/msh2_lof.svg",
+   "bytes": 96507,
+   "sha256": "290fbd81108acff89fc36b5bd8cbb1eb14cb766e93b8ca28a42a62743df83c17"
+  },
+  {
+   "path": "results/figures/pten_abundance.png",
+   "bytes": 103059,
+   "sha256": "7ab184bee8986f1922b736450ee0223935ec59e6d5167b6b8e5cba982a9f4245"
+  },
+  {
+   "path": "results/figures/pten_abundance.svg",
+   "bytes": 99336,
+   "sha256": "25886b6b2a1fecb248a9d6abe982cc802cb2cd3cd69fa70c333e2bbf63c9769c"
+  },
+  {
+   "path": "results/figures/pten_phosphatase.png",
+   "bytes": 96260,
+   "sha256": "659859fd0fadb7353faad73caf1acd138e3d767edf2d47238a75d436fad9a709"
+  },
+  {
+   "path": "results/figures/pten_phosphatase.svg",
+   "bytes": 89328,
+   "sha256": "3f042a49e047d40bbcd4389f9d424d3ac5eef7295c1dc5b0410ad2e60c7cb8eb"
+  },
+  {
+   "path": "results/figures/tp53_nutlin.png",
+   "bytes": 103357,
+   "sha256": "96f1880876df138bba4da3ac3f01cb83f434ed2b04df85dd194ce874cbb94ef2"
+  },
+  {
+   "path": "results/figures/tp53_nutlin.svg",
+   "bytes": 96217,
+   "sha256": "6452ac497c168b88be5628dc14032cd4a92967a2d90c84fa3485a863f38345d6"
+  },
+  {
+   "path": "results/tables/matching.tsv",
+   "bytes": 2284,
+   "sha256": "709216a2cbdb9d59478f0c08c74d5fb92cb838d7336d16bb9dffdb525936b5e7"
+  },
+  {
+   "path": "results/tables/summary.tsv",
+   "bytes": 17340,
+   "sha256": "c327f52a35d4f0483ebb4413fb6f4460f243e5b273ea351ea47160071cf1277d"
+  }
+ ]
+}

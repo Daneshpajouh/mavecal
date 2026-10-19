@@ -1,0 +1,1 @@
+2026-10-19 12:09:52,797 INFO mavecal: pten_abundance: {'scoreset': 'pten_abundance', 'score_rows': 4409, 'discordant_protein_changes': 0, 'assay_keys': 4112, 'matched': 91, 'by_method': {'post_mapped_protein': 91}, 'by_label': {'P': 86, 'B': 5}}

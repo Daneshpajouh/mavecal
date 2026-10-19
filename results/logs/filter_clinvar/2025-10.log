@@ -1,0 +1,2 @@
+2026-10-19 12:09:51,289 INFO mavecal: variant_summary_2025-10.txt.gz: 22622 GRCh38 SNV rows for BRCA1,MSH2,PTEN,TP53
+2026-10-19 12:09:51,289 INFO mavecal: label counts: {nan: 13118, 'B': 7054, 'P': 2450}

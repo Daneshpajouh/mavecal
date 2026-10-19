@@ -1,0 +1,14 @@
+{
+ "assay_keys": 6153,
+ "by_label": {
+  "B": 3,
+  "P": 116
+ },
+ "by_method": {
+  "post_mapped_protein": 119
+ },
+ "discordant_protein_changes": 0,
+ "matched": 119,
+ "score_rows": 8681,
+ "scoreset": "pten_phosphatase"
+}

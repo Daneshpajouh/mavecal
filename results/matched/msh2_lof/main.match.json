@@ -1,0 +1,14 @@
+{
+ "assay_keys": 16749,
+ "by_label": {
+  "B": 54,
+  "P": 112
+ },
+ "by_method": {
+  "post_mapped_protein": 166
+ },
+ "discordant_protein_changes": 0,
+ "matched": 166,
+ "score_rows": 17746,
+ "scoreset": "msh2_lof"
+}

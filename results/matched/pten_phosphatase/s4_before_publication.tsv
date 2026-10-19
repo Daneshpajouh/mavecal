@@ -1,0 +1,6 @@
+variant	score	label	stars	n_clinvar	variation_ids	match_method
+p.Arg130Gln	-2.04016411	P	3	1	7829	post_mapped_protein
+p.Arg173His	-1.338165727	P	2	1	376032	post_mapped_protein
+p.Asp107Val	-2.85186154	P	2	1	372481	post_mapped_protein
+p.Cys136Tyr	-2.444459068	P	3	1	189406	post_mapped_protein
+p.Pro246Leu	-1.62165261	P	3	1	142269	post_mapped_protein

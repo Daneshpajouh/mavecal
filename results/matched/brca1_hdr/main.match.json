@@ -1,0 +1,14 @@
+{
+ "assay_keys": 2749,
+ "by_label": {
+  "B": 16,
+  "P": 31
+ },
+ "by_method": {
+  "post_mapped_protein": 47
+ },
+ "discordant_protein_changes": 0,
+ "matched": 47,
+ "score_rows": 2820,
+ "scoreset": "brca1_hdr"
+}
