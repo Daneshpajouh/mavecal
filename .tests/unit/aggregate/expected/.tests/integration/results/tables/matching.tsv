@@ -1,0 +1,11 @@
+scoreset	analysis	score_rows	assay_keys	matched	pathogenic	benign	discordant_protein_changes	by_method
+toy_pten_one_class	main	12	6	6	6	0	0	post_mapped_protein=6
+toy_pten_one_class	s1_one_star	12	6	6	6	0	0	post_mapped_protein=6
+toy_pten_one_class	s2_release_2025_10	12	6	6	6	0	0	post_mapped_protein=6
+toy_pten_one_class	s3_release_2018_01	12	6	6	6	0	0	post_mapped_protein=6
+toy_pten_one_class	s4_before_publication	12	6	0	0	0	0	
+toy_tp53	main	29	29	24	12	12	1	post_mapped_protein=24
+toy_tp53	s1_one_star	29	29	28	14	14	1	post_mapped_protein=28
+toy_tp53	s2_release_2025_10	29	29	24	12	12	1	post_mapped_protein=24
+toy_tp53	s3_release_2018_01	29	29	28	14	14	1	post_mapped_protein=28
+toy_tp53	s4_before_publication	29	29	18	9	9	0	post_mapped_protein=18

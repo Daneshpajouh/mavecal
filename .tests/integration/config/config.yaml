@@ -1,0 +1,23 @@
+# Offline run on synthetic fixtures; paths are relative to the repository root.
+data_dir: .tests/integration/data
+results_dir: .tests/integration/results
+scoresets: .tests/integration/config/scoresets.tsv
+offline_mavedb_dir: tests/data/mavedb
+clinvar:
+  "2026-10":
+    variant_summary: tests/data/variant_summary_tiny.txt.gz
+    submission_summary: tests/data/submission_summary_tiny.txt.gz
+# Snakemake merges this file into config/config.yaml, so every analysis name is redefined
+# here to point at the fixture release.
+analyses:
+  main: {release: "2026-10", min_stars: 2, labels: aggregate}
+  s1_one_star: {release: "2026-10", min_stars: 1, labels: aggregate}
+  s2_release_2025_10: {release: "2026-10", min_stars: 2, labels: aggregate}
+  s3_release_2018_01: {release: "2026-10", min_stars: 1, labels: aggregate}
+  s4_before_publication: {release: "2026-10", min_stars: 1, labels: before_publication}
+statistics:
+  n_boot: 200
+  seed: 20261019
+  n_folds: 5
+  min_per_class_threshold: 5
+  small_class: 10

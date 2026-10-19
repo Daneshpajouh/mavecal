@@ -1,0 +1,7 @@
+id	urn	gene	assay	pmid	doi	published	direction	level	transcript	protein	t2_abnormal	t2_normal
+brca1_sge	urn:mavedb:00000097-0-2	BRCA1	saturation genome editing, HAP1 fitness	30209399	10.1038/s41586-018-0461-z	2018-09-12	lower_is_abnormal	nucleotide	NM_007294	NP_009225.1	<=-1.328	>=-0.748
+brca1_hdr	urn:mavedb:00000081-a-2	BRCA1	homology-directed repair reporter	30219179	10.1016/j.ajhg.2018.07.016	2018-09-12	lower_is_abnormal	protein	NM_007294	NP_009225.1		
+tp53_nutlin	urn:mavedb:00000068-b-1	TP53	A549 p53-null growth under nutlin-3	30224644	10.1038/s41588-018-0204-y	2018-09-17	higher_is_abnormal	protein	NM_000546	NP_000537.3		
+pten_phosphatase	urn:mavedb:00000054-a-1	PTEN	yeast lipid phosphatase growth	29706350	10.1016/j.ajhg.2018.03.018	2018-04-26	lower_is_abnormal	protein	NM_000314	NP_000305.3	<=-2.13	-1.11..0.89
+pten_abundance	urn:mavedb:00000013-a-1	PTEN	VAMP-seq protein abundance	29785012	10.1038/s41588-018-0122-z	2018-05-21	lower_is_abnormal	protein	NM_000314	NP_000305.3	<0.56294	>=0.66565
+msh2_lof	urn:mavedb:00000050-a-1	MSH2	HAP1 6-thioguanine resistance	33357406	10.1016/j.ajhg.2020.12.003	2020-12-23	higher_is_abnormal	protein	NM_000251	NP_000242.1	>0	<0

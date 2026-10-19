@@ -15,3 +15,6 @@ results/interim/
 build/
 dist/
 .DS_Store
+.tests/integration/data/
+.tests/integration/results/
+.tests/integration/logs/

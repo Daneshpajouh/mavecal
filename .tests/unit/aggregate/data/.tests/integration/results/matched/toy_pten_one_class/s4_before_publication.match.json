@@ -1,0 +1,9 @@
+{
+ "assay_keys": 6,
+ "by_label": {},
+ "by_method": {},
+ "discordant_protein_changes": 0,
+ "matched": 0,
+ "score_rows": 12,
+ "scoreset": "toy_pten_one_class"
+}

@@ -1,0 +1,6 @@
+{
+ "n_benign": 0,
+ "n_pathogenic": 6,
+ "small": true,
+ "status": "one class missing"
+}

@@ -1,0 +1,14 @@
+{
+ "assay_keys": 29,
+ "by_label": {
+  "B": 12,
+  "P": 12
+ },
+ "by_method": {
+  "post_mapped_protein": 24
+ },
+ "discordant_protein_changes": 1,
+ "matched": 24,
+ "score_rows": 29,
+ "scoreset": "toy_tp53"
+}
