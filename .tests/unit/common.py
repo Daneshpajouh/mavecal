@@ -59,6 +59,11 @@ class OutputChecker:
         if expected_file.suffix in {".png", ".svg"}:
             assert generated_file.stat().st_size > 0, generated_file
             return
+        # Floating-point results differ in the last digits between macOS and Linux builds of
+        # numpy and scipy, so numeric tables and JSON are compared with a tolerance.
+        if expected_file.suffix in {".json", ".tsv"}:
+            assert _close(_load(expected_file), _load(generated_file)), generated_file
+            return
         try:
             check_output(
                 cmp_cmds.get(expected_file.suffix, ["cmp"])
@@ -71,3 +76,29 @@ class OutputChecker:
                 f"{expected_file} differs:\n\n{e.output}",
                 pytrace=False,
             )
+
+
+def _load(path):
+    import json
+
+    import pandas as pd
+
+    if path.suffix == ".json":
+        return json.loads(path.read_text())
+    if path.stat().st_size <= 1:
+        return []
+    return pd.read_csv(path, sep="\t").to_dict("records")
+
+
+def _close(a, b):
+    import math
+
+    if isinstance(a, dict) and isinstance(b, dict):
+        return a.keys() == b.keys() and all(_close(a[k], b[k]) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(_close(x, y) for x, y in zip(a, b))
+    if isinstance(a, float) and isinstance(b, float):
+        if math.isnan(a) and math.isnan(b):
+            return True
+        return math.isclose(a, b, rel_tol=1e-9, abs_tol=1e-12)
+    return a == b
