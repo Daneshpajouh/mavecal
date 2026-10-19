@@ -19,3 +19,6 @@
   for MSH2 (fold thresholds -0.774 to -0.484); results with other seeds were not computed.
 - ClinVar access used NCBI's FTP service because the HTTPS mirror's robots.txt disallows
   automated clients; see data_sources.md.
+- `workflow/envs/analysis.yaml` pins the same versions as `pyproject.toml` for `--use-conda`, but
+  it was not solved with conda for this release. The tested environments are the Python 3.13
+  virtual environment on macOS and the Docker image (Linux, Python 3.13.16).

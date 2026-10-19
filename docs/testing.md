@@ -42,3 +42,22 @@ $ .venv/bin/python -m pytest .tests/unit -p no:cacheprovider
 
 The uncovered lines are mostly `mavedb.fetch_score_set` and `pipeline.fetch`, which need the
 network and run only in the real workflow.
+
+## In the container
+
+The image from `Dockerfile` (python:3.13-slim pinned by digest), built and run on 2026-10-19:
+
+```console
+$ docker build -t mave-clinvar-calibration:1.0.0 .
+$ docker run --rm --entrypoint sh mave-clinvar-calibration:1.0.0 -c \
+    'uname -sm; python --version; python -m pytest -q; python -m pytest .tests/unit -q; snakemake --lint'
+Linux aarch64
+Python 3.13.16
+...............................................................          [100%]
+........                                                                 [100%]
+Congratulations, your workflow is in a good condition!
+```
+
+The first container run failed one rule test: the evaluate rule's floats differ in the last
+digits between the macOS and Linux numerical libraries, which a byte comparison rejects. The
+rule tests now compare JSON and TSV outputs with a relative tolerance of 1e-9.
