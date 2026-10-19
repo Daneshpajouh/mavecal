@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mavecal"
+version = "1.0.0"
+description = "Calibrate MaveDB assay scores against ClinVar labels with the Brnich et al. OddsPath method"
+readme = "README.md"
+license = "Apache-2.0"
+authors = [{ name = "Amir Daneshpajouh" }]
+requires-python = ">=3.12"
+dependencies = [
+  "numpy==2.5.4",
+  "pandas==3.0.6",
+  "scipy==1.18.1",
+  "matplotlib==3.11.2",
+  "requests==2.34.2",
+  "pyyaml==6.0.3",
+  "markdown==3.9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.1.1",
+  "pytest-cov==7.1.0",
+  "scikit-learn==1.9.1",
+  "ruff==0.16.9",
+  "mypy==2.3.1",
+  "snakemake==9.27.0",
+  "snakefmt==2.1.0",
+  "snakemake-executor-plugin-slurm==2.8.0",
+  "pandas-stubs",
+  "types-requests",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mavecal = ["py.typed"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# Snakemake injects the `snakemake` object into scripts at run time.
+"workflow/scripts/*.py" = ["F821", "E402"]
+".tests/unit/*.py" = ["E402", "F401", "I001", "SIM", "UP", "RUF", "B"]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+files = ["src/mavecal", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["scipy.*", "matplotlib.*", "sklearn.*", "markdown.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

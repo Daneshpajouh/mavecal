@@ -1,0 +1,45 @@
+from snakemake.utils import min_version, validate
+import pandas as pd
+
+min_version("9.0")
+
+
+configfile: "config/config.yaml"
+
+
+validate(config, "schemas/config.schema.yaml")
+
+SCORESETS = pd.read_csv(
+    config["scoresets"], sep="\t", dtype=str, keep_default_na=False
+).set_index("id", drop=False)
+validate(SCORESETS, "schemas/scoresets.schema.yaml")
+
+DATA = config["data_dir"]
+RES = config["results_dir"]
+ANALYSES = list(config["analyses"])
+
+
+wildcard_constraints:
+    scoreset="|".join(SCORESETS.index),
+    analysis="|".join(ANALYSES),
+    release=r"\d{4}-\d{2}",
+
+
+report: "report/workflow.rst"
+
+
+include: "rules/common.smk"
+include: "rules/data.smk"
+include: "rules/analysis.smk"
+include: "rules/figures.smk"
+
+
+rule all:
+    default_target: True
+    input:
+        final_outputs(),
+
+
+localrules:
+    fetch_mavedb,
+    aggregate,

@@ -1,0 +1,28 @@
+# Raw downloads and filtered intermediates live outside the repository.
+data_dir: /Volumes/MXFAST/data/portfolio/mave-clinvar-calibration
+results_dir: results
+scoresets: config/scoresets.tsv
+
+clinvar:
+  "2026-10":
+    variant_summary: /Volumes/MXFAST/data/portfolio/clinvar/variant_summary_2026-10.txt.gz
+    submission_summary: /Volumes/MXFAST/data/portfolio/clinvar/submission_summary_2026-10.txt.gz
+  "2025-10":
+    variant_summary: /Volumes/MXFAST/data/portfolio/clinvar/variant_summary_2025-10.txt.gz
+  "2018-01":
+    variant_summary: /Volumes/MXFAST/data/portfolio/mave-clinvar-calibration/clinvar_archive/variant_summary_2018-01.txt.gz
+
+# The analyses fixed in docs/analysis_plan.md. "main" is the primary analysis.
+analyses:
+  main: {release: "2026-10", min_stars: 2, labels: aggregate}
+  s1_one_star: {release: "2026-10", min_stars: 1, labels: aggregate}
+  s2_release_2025_10: {release: "2025-10", min_stars: 2, labels: aggregate}
+  s3_release_2018_01: {release: "2018-01", min_stars: 1, labels: aggregate}
+  s4_before_publication: {release: "2026-10", min_stars: 2, labels: before_publication}
+
+statistics:
+  n_boot: 2000
+  seed: 20261019
+  n_folds: 5
+  min_per_class_threshold: 5
+  small_class: 10

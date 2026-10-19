@@ -1,0 +1,12 @@
+# Workstation run: at most six cores, one MaveDB request at a time.
+cores: 6
+resources:
+  - mavedb_api=1
+  - mem_mb=16000
+printshellcmds: true
+rerun-incomplete: true
+keep-going: false
+show-failed-logs: true
+# On macOS the benchmark sampler (psutil memory_full_info) can raise
+# "mach_vm_region ... failed" when a short job exits mid-sample; a retry clears it.
+retries: 2

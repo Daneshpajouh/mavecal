@@ -1,0 +1,39 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+description: Configuration for mave-clinvar-calibration
+type: object
+properties:
+  data_dir: {type: string}
+  results_dir: {type: string}
+  scoresets: {type: string}
+  offline_mavedb_dir:
+    type: string
+    description: Directory with pre-downloaded score sets (used by the test configuration).
+  clinvar:
+    type: object
+    minProperties: 1
+    additionalProperties:
+      type: object
+      properties:
+        variant_summary: {type: string}
+        submission_summary: {type: string}
+      required: [variant_summary]
+  analyses:
+    type: object
+    required: [main]
+    additionalProperties:
+      type: object
+      properties:
+        release: {type: string}
+        min_stars: {type: integer, minimum: 0, maximum: 4}
+        labels: {type: string, enum: [aggregate, before_publication]}
+      required: [release, min_stars, labels]
+  statistics:
+    type: object
+    properties:
+      n_boot: {type: integer, minimum: 100}
+      seed: {type: integer}
+      n_folds: {type: integer, minimum: 2}
+      min_per_class_threshold: {type: integer, minimum: 2}
+      small_class: {type: integer, minimum: 1}
+    required: [n_boot, seed, n_folds, min_per_class_threshold, small_class]
+required: [data_dir, results_dir, scoresets, clinvar, analyses, statistics]

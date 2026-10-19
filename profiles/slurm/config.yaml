@@ -1,0 +1,24 @@
+# Cluster run with snakemake-executor-plugin-slurm. Set slurm_account and slurm_partition
+# for your site before use. MaveDB downloads run on the login node (localrules) because
+# compute nodes often have no outbound network.
+executor: slurm
+jobs: 50
+latency-wait: 60
+rerun-incomplete: true
+show-failed-logs: true
+use-apptainer: true
+default-resources:
+  slurm_account: "CHANGE_ME"
+  slurm_partition: "CHANGE_ME"
+  mem_mb: 4000
+  runtime: 30
+  cpus_per_task: 1
+set-resources:
+  filter_clinvar:
+    mem_mb: 8000
+    runtime: 60
+  filter_submissions:
+    mem_mb: 8000
+    runtime: 60
+resources:
+  - mavedb_api=1
