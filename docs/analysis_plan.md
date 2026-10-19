@@ -74,11 +74,10 @@ reason is recorded in docs/limitations.md.
      to 0.89; pten_abundance: abnormal below 0.56294, normal at or above 0.66565; msh2_lof:
      abnormal above 0, normal below 0). Scores between classes are indeterminate. brca1_hdr and
      tp53_nutlin have no published classes on MaveDB, so T2 is not estimated for them.
-4. OddsPath (Brnich et al. 2019): with P1 the proportion pathogenic among all controls
-   (indeterminate readouts included) and P2 the proportion pathogenic among controls with an abnormal (or normal) readout,
+4. OddsPath (Brnich et al. 2019): with P1 the proportion pathogenic among all controls with a
+   readout and P2 the proportion pathogenic among controls with an abnormal (or normal) readout,
    OddsPath = P2(1 - P1) / ((1 - P2) P1). The reported estimate adds one misclassified control
-   to each readout set, following Brnich et al. (2019), so that no estimate is zero or infinite
-   (this wording is not yet checked against the paper); the raw
+   to each readout set, the device Brnich et al. used to avoid zero and infinite odds; the raw
    value is reported beside it. Bootstrap 95% interval from 2000 stratified resamples of the
    readouts (threshold held fixed, so the interval ignores threshold-selection variance).
 5. Evidence strength from Brnich et al. Table 3: above 350 PS3_very_strong, above 18.7 PS3,
