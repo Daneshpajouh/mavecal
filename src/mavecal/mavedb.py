@@ -52,12 +52,15 @@ def fetch_score_set(urn: str, out_dir: Path, session: requests.Session | None = 
 
 
 def missense_change(hgvs_p: str) -> str | None:
-    """Return 'p.Arg175His' for a single missense substitution, else None."""
+    """Return 'p.Arg175His' for a single missense substitution, else None.
+
+    Changes at position 1 (start loss) are not missense; see clinvar.is_missense.
+    """
     m = THREE_LETTER.match(hgvs_p)
     if m is None:
         return None
-    ref, _, alt = m.groups()
-    if alt == ref or alt == "Ter":
+    ref, pos, alt = m.groups()
+    if alt == ref or alt == "Ter" or pos == "1":
         return None
     return hgvs_p
 

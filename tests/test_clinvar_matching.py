@@ -31,6 +31,11 @@ def test_parse_name_and_missense() -> None:
     assert not clinvar.is_missense("p.Arg1699Ter")
     assert not clinvar.is_missense("p.Arg1699=")
     assert not clinvar.is_missense(float("nan"))
+    # Start loss at the initiator Met1 is not a missense substitution.
+    assert not clinvar.is_missense("p.Met1Val")
+    assert not clinvar.is_missense("p.Met1Ile")
+    assert clinvar.is_missense("p.Met10Val")
+    assert clinvar.is_missense("p.Met11Val")
 
 
 def test_load_variant_summary_keeps_grch38_snvs() -> None:
@@ -116,3 +121,10 @@ def test_nucleotide_keys_and_match() -> None:
     out = matching.match_nucleotide(keys, cv, "NM_000546", min_stars=2)
     assert len(out) == 1
     assert out.loc[0, "label"] == "P"
+
+
+def test_mavedb_missense_change_excludes_start_loss() -> None:
+    assert mavedb.missense_change("p.Met1Val") is None
+    assert mavedb.missense_change("p.Met1Thr") is None
+    assert mavedb.missense_change("p.Arg175His") == "p.Arg175His"
+    assert mavedb.missense_change("p.Met100Val") == "p.Met100Val"

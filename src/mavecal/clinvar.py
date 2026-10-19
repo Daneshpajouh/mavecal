@@ -67,10 +67,15 @@ def parse_name(name: str) -> tuple[str | None, str | None, str | None]:
 
 
 def is_missense(hgvs_p: object) -> bool:
+    """True for a single amino acid substitution other than at the initiator Met1.
+
+    A change at position 1 removes the start codon; it does not substitute one
+    residue in the protein the assay measures, so it is not counted as missense.
+    """
     if not isinstance(hgvs_p, str):
         return False
     m = MISSENSE.match(hgvs_p)
-    return m is not None and m.group(3) not in (m.group(1), "Ter")
+    return m is not None and m.group(2) != "1" and m.group(3) not in (m.group(1), "Ter")
 
 
 def load_variant_summary(path: Path, genes: Iterable[str], chunksize: int = 400_000) -> pd.DataFrame:
