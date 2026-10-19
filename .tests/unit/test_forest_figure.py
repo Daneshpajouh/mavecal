@@ -49,6 +49,9 @@ def test_forest_figure(conda_prefix):
                 "--notemp",
                 "--show-failed-logs",
                 "-j1",
+                # macOS: the benchmark sampler can fail on short jobs (see profiles/local).
+                "--retries",
+                "2",
                 "--target-files-omit-workdir-adjustment",
                 "--allowed-rules",
                 "forest_figure",

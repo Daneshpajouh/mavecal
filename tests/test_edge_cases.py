@@ -98,3 +98,16 @@ def test_threshold_rules(rule: str, values: list[float], expected: list[bool]) -
 def test_bad_threshold_rule_raises() -> None:
     with pytest.raises(ValueError):
         parse_rule("about 3")
+
+
+def test_reader_errors_name_the_file(tmp_path: Path) -> None:
+    from mavecal import clinvar, pipeline
+
+    vcf_like = tmp_path / "not_clinvar.tsv"
+    vcf_like.write_text("#CHROM\tPOS\tID\tREF\tALT\n17\t1\t.\tA\tG\n")
+    with pytest.raises(ValueError, match=r"not_clinvar\.tsv"):
+        clinvar.load_variant_summary(vcf_like, ["TP53"])
+    bare = tmp_path / "scores_only.csv"
+    bare.write_text("accession,scores.score\nx#1,0.5\n")
+    with pytest.raises(ValueError, match=r"scores_only\.csv"):
+        pipeline.match(bare, vcf_like, {"id": "x"}, {}, None, tmp_path / "o.tsv", tmp_path / "o.json")

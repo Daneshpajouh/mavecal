@@ -8,8 +8,6 @@ __pycache__/
 htmlcov/
 .snakemake/
 resources/
-logs/
-benchmarks/
 results/interim/
 *.egg-info/
 build/

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -18,7 +19,9 @@ pytestmark = pytest.mark.skipif(not SNAKEMAKE, reason="snakemake not installed")
 
 
 def run(*args: str) -> subprocess.CompletedProcess[str]:
-    return subprocess.run([SNAKEMAKE, *args], cwd=ROOT, capture_output=True, text=True, check=False)
+    # A data directory set for real runs would override the test configuration's.
+    env = {k: v for k, v in os.environ.items() if k != "MAVECAL_DATA_DIR"}
+    return subprocess.run([SNAKEMAKE, *args], cwd=ROOT, capture_output=True, text=True, check=False, env=env)
 
 
 def test_lint_is_clean() -> None:

@@ -1,12 +1,12 @@
-# Offline run on synthetic fixtures; paths are relative to the repository root.
+# Offline run on synthetic fixtures. ClinVar paths are relative to data_dir.
 data_dir: .tests/integration/data
 results_dir: .tests/integration/results
 scoresets: .tests/integration/config/scoresets.tsv
 offline_mavedb_dir: tests/data/mavedb
 clinvar:
   "2026-10":
-    variant_summary: tests/data/variant_summary_tiny.txt.gz
-    submission_summary: tests/data/submission_summary_tiny.txt.gz
+    variant_summary: ../../../tests/data/variant_summary_tiny.txt.gz
+    submission_summary: ../../../tests/data/submission_summary_tiny.txt.gz
 # Snakemake merges this file into config/config.yaml, so every analysis name is redefined
 # here to point at the fixture release.
 analyses:
