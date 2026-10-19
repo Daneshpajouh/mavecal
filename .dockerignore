@@ -1,0 +1,11 @@
+.venv
+.git
+.snakemake
+.mypy_cache
+.ruff_cache
+.pytest_cache
+logs
+benchmarks
+data
+.tests/integration/data
+.tests/integration/results
