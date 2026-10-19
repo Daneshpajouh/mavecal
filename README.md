@@ -53,7 +53,8 @@ The full results, with intervals, are in [docs/report.md](docs/report.md).
 
 ## Running it
 
-Python 3.13 or later. The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
+Python 3.13 (on Python 3.14, pip builds one Snakemake dependency, `immutables`, from source and
+needs a C compiler). The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
 six MaveDB score sets (8 MB) through the MaveDB API.
 
 ```console
@@ -73,7 +74,7 @@ $ .venv/bin/snakemake --profile profiles/local
 $ .venv/bin/snakemake --report results/snakemake_report.html
 ```
 
-From the next release the run records Snakemake's own last progress line in
+Since 2.0.0 the run records Snakemake's own last progress line in
 `results/run/manifest_end.json` as `"steps": {"done": ..., "total": ...}`, so the step count
 can be checked. The 79 above is from the 1.0.0 run, before this field existed. The committed
 results come from a rerun with `--forcerun filter_clinvar` that reused the six MaveDB
