@@ -48,10 +48,11 @@ Scores are oriented by each assay's documented direction, never by the data, so 
 - T2 thresholds: the class boundaries the assay authors published, as recorded on MaveDB. The
   MaveDB record for PTEN phosphatase gives the upper bound of the wild-type-like class as 89.0;
   the record's method text gives 0.89, which is used here.
-- OddsPath follows Brnich et al. (2019): P1 is the pathogenic fraction of all controls with a
-  readout, P2 the pathogenic fraction among abnormal (or normal) readouts, and
+- OddsPath follows Brnich et al. (2019): P1 is the pathogenic fraction of all controls, indeterminate
+  readouts included, P2 the pathogenic fraction among abnormal (or normal) readouts, and
   OddsPath = P2(1 - P1) / ((1 - P2) P1). One misclassified control is added to each readout set
-  before the estimate, the device Brnich et al. used in their modelling; with 1 benign control
+  before the estimate, following Brnich et al. (2019), so that no estimate is zero or infinite
+  (this wording is not yet checked against the paper); with 1 benign control
   in an abnormal set this halves the estimate, so the raw value is in the tables too.
   Intervals resample the readouts (2,000 replicates) with the thresholds held fixed.
 - Evidence strength uses Brnich et al. Table 3. The quoted strength comes from the interval

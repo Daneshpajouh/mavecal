@@ -33,18 +33,20 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
 | BRCA1 saturation genome editing | 151 | 22 | 0.983 (0.952 to 1.000) | PS3_moderate | BS3 |
 | BRCA1 HDR reporter | 31 | 16 | 0.861 (0.736 to 0.968) | PS3_supporting | BS3_supporting |
 | TP53 nutlin-3 growth | 202 | 74 | 0.960 (0.935 to 0.982) | PS3_moderate | BS3_moderate |
-| PTEN lipid phosphatase | 142 | 3 | 0.965 (0.901 to 1.000) | not estimated | not estimated |
-| PTEN abundance (VAMP-seq) | 108 | 5 | 0.819 (0.713 to 0.920) | not quoted, 5 benign | not quoted, 5 benign |
+| PTEN lipid phosphatase | 142 | 3 | 0.965 (3 benign, no interval) | not estimated | not estimated |
+| PTEN abundance (VAMP-seq) | 108 | 5 | 0.819 (5 benign, no interval) | not quoted, 5 benign | not quoted, 5 benign |
 | MSH2 6-thioguanine resistance | 112 | 54 | 0.924 (0.871 to 0.967) | PS3_moderate | BS3_moderate |
 
 - BRCA1 SGE, TP53 and MSH2 support moderate evidence or better for both readouts, BRCA1 HDR
   supporting-level evidence. PTEN cannot be calibrated from ClinVar: there are only 3 and 5
   benign missense controls.
-- Against the ClinVar release of January 2018, which predates all six assay papers, the AUC
-  falls for every score set that can still be scored: BRCA1 SGE 0.983 to 0.946, BRCA1 HDR 0.861
-  to 0.735, TP53 0.960 to 0.912, MSH2 0.924 to 0.807. Part of the main-analysis performance may
-  rest on labels informed by the assays themselves; the 2018 label sets are also smaller and
-  include 1-star records, so the drop is not a clean estimate of circularity.
+- Against the ClinVar release of January 2018, which predates all six assay papers, the point
+  AUC is lower for every score set that can still be scored, but every 2018 interval overlaps
+  the main one: BRCA1 SGE 0.983 to 0.946 (0.87 to 1.00), BRCA1 HDR 0.861 to 0.735 (0.45 to
+  1.00, which includes 0.5), TP53 0.960 to 0.912 (0.78 to 0.99), MSH2 0.924 to 0.807 (0.69 to
+  0.91). Rebuilding labels from submissions made before each paper (S4) shows no drop for BRCA1
+  SGE (0.985) and a drop for MSH2 (0.839, 8 benign controls). Neither check separates
+  circularity from the smaller, older label sets, which also include 1-star records.
 
 The full results, with intervals, are in [docs/report.md](docs/report.md).
 

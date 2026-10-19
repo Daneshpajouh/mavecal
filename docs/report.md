@@ -46,11 +46,14 @@ PTEN numbers below rest on 3 and 5 benign variants and should be read that way.
 | brca1_sge | 0.983 (0.952 to 1.000) | 0.938 to 1.000 | 5e-13 |
 | brca1_hdr | 0.861 (0.736 to 0.968) | 0.691 to 0.995 | 9e-05 |
 | tp53_nutlin | 0.960 (0.935 to 0.982) | 0.925 to 0.986 | 3e-31 |
-| pten_phosphatase | 0.965 (0.901 to 1.000) | 0.866 to 1.000 | 0.0007 |
-| pten_abundance | 0.819 (0.713 to 0.920) | 0.676 to 0.946 | 0.007 |
+| pten_phosphatase | 0.965 (3 benign, no interval) | no interval | 0.0007 |
+| pten_abundance | 0.819 (5 benign, no interval) | no interval | 0.007 |
 | msh2_lof | 0.924 (0.871 to 0.967) | 0.844 to 0.976 | 3e-18 |
 
-All six simultaneous intervals exclude 0.5.
+The simultaneous intervals of the four score sets with at least 10 controls per class all
+exclude 0.5. No interval is given where a class has fewer than 10 controls (PTEN: 3 and 5
+benign), the same rule the plan uses for evidence strength (analysis_plan.md item 7): a
+percentile bootstrap from 3 to 8 controls says little.
 
 ## OddsPath and evidence strength
 
@@ -102,16 +105,21 @@ assay here (earliest assay paper online 2018-04-26), at 1 or more stars as fixed
 | score set | main | S1 one star | S2 2025-10 | S3 2018-01 | S4 before publication |
 |---|---|---|---|---|---|
 | brca1_sge | 0.983 (0.95 to 1.00; 151/22) | 0.994 (0.98 to 1.00; 208/111) | 0.980 (0.94 to 1.00; 132/19) | 0.946 (0.87 to 1.00; 41/14) | 0.985 (0.95 to 1.00; 41/16) |
-| brca1_hdr | 0.861 (0.74 to 0.97; 31/16) | 0.879 (0.78 to 0.97; 39/34) | 0.846 (0.69 to 0.96; 26/16) | 0.735 (0.45 to 1.00; 11/12) | 0.818 (0.55 to 1.00; 11/6) |
-| tp53_nutlin | 0.960 (0.94 to 0.98; 202/74) | 0.935 (0.91 to 0.96; 224/149) | 0.962 (0.93 to 0.98; 175/71) | 0.912 (0.78 to 0.99; 108/11) | 1.000 (1.00 to 1.00; 12/3) |
-| pten_phosphatase | 0.965 (0.90 to 1.00; 142/3) | 0.946 (0.89 to 0.99; 197/5) | 0.971 (0.91 to 1.00; 116/3) | no benign (69/0) | no benign (5/0) |
-| pten_abundance | 0.819 (0.71 to 0.92; 108/5) | 0.700 (0.56 to 0.84; 151/8) | 0.819 (0.71 to 0.91; 86/5) | no benign (50/0) | no benign (2/0) |
-| msh2_lof | 0.924 (0.87 to 0.97; 112/54) | 0.943 (0.91 to 0.97; 139/287) | 0.913 (0.85 to 0.96; 100/50) | 0.807 (0.69 to 0.91; 58/20) | 0.839 (0.59 to 0.99; 49/8) |
+| brca1_hdr | 0.861 (0.74 to 0.97; 31/16) | 0.879 (0.78 to 0.97; 39/34) | 0.846 (0.69 to 0.96; 26/16) | 0.735 (0.45 to 1.00; 11/12) | 0.818 (no interval; 11/6) |
+| tp53_nutlin | 0.960 (0.94 to 0.98; 202/74) | 0.935 (0.91 to 0.96; 224/149) | 0.962 (0.93 to 0.98; 175/71) | 0.912 (0.78 to 0.99; 108/11) | 1.000 (no interval; 12/3) |
+| pten_phosphatase | 0.965 (no interval; 142/3) | 0.946 (no interval; 197/5) | 0.971 (no interval; 116/3) | no benign (69/0) | no benign (5/0) |
+| pten_abundance | 0.819 (no interval; 108/5) | 0.700 (no interval; 151/8) | 0.819 (no interval; 86/5) | no benign (50/0) | no benign (2/0) |
+| msh2_lof | 0.924 (0.87 to 0.97; 112/54) | 0.943 (0.91 to 0.97; 139/287) | 0.913 (0.85 to 0.96; 100/50) | 0.807 (0.69 to 0.91; 58/20) | 0.839 (no interval; 49/8) |
 
-Every score set that can be scored on 2018 labels does worse on them, and the conservative
-evidence strength drops by one level or more: BRCA1 SGE abnormal from PS3_moderate to
-PS3_supporting and normal from BS3 to BS3_moderate; TP53 abnormal from PS3_moderate to
-indeterminate; MSH2 from moderate to supporting on both sides. The S4 rebuild shows no drop for
+Cells read AUC (95% interval; pathogenic/benign). No interval where a class has fewer than 10 controls.
+
+Every score set that can be scored on 2018 labels has a lower point AUC on them, though each
+2018 interval overlaps the main one. The conservative evidence strength drops for three of the
+four: BRCA1 SGE abnormal from PS3_moderate to PS3_supporting and normal from BS3 to
+BS3_moderate; TP53 abnormal from PS3_moderate to indeterminate; MSH2 from moderate to
+supporting on both sides. BRCA1 HDR moves both ways: its abnormal side rises from
+PS3_supporting to PS3_moderate (11 pathogenic and 12 benign controls) and its normal side drops
+from BS3_supporting to indeterminate. The S4 rebuild shows no drop for
 BRCA1 SGE (0.985) and a drop for MSH2 (0.839, 8 benign controls); it leaves TP53 with 3 benign
 controls and PTEN with none.
 
@@ -122,7 +130,9 @@ noise of its own. A one-year shift in release (S2) moves no AUC by more than 0.0
 
 ## Published calibrations of the same assays
 
-MaveDB records OddsPath values from earlier calibrations for some of these score sets. For BRCA1 SGE with the same
+MaveDB records OddsPath values from earlier calibrations for some of these score sets (the
+values below are not yet checked against each MaveDB record; record links and read dates
+will be added when they are). For BRCA1 SGE with the same
 class boundaries, the IGVF Coding Variant Focus Group missense calibration records OddsPath 74.6
 (abnormal) and 0.0168 (normal), and Fayer et al. (2021) record 52.4 and 0.02. For MSH2, the
 IGVF missense calibration records 71.1 and 0.0483, and Scott et al. (2022) 24.9 and 0.043. The
