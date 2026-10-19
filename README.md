@@ -37,9 +37,10 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
 | PTEN abundance (VAMP-seq) | 107 | 5 | 0.824 (5 benign, no interval) | not quoted, 5 benign | not quoted, 5 benign |
 | MSH2 6-thioguanine resistance | 112 | 54 | 0.924 (0.871 to 0.967) | PS3_moderate | BS3_moderate |
 
-- BRCA1 SGE, TP53 and MSH2 support moderate evidence or better for both readouts, BRCA1 HDR
-  supporting-level evidence. PTEN cannot be calibrated from ClinVar: there are only 3 and 5
-  benign missense controls.
+- Measured against these ClinVar controls, BRCA1 SGE, TP53 and MSH2 reach moderate evidence
+  or better for both readouts, and BRCA1 HDR supporting-level evidence. Whether an assay
+  models the disease mechanism, which ClinGen also requires, is not judged here. PTEN cannot
+  be calibrated from ClinVar: there are only 3 and 5 benign missense controls.
 - Against the ClinVar release of January 2018, which predates all six assay papers, the point
   AUC is lower for every score set that can still be scored, but every 2018 interval overlaps
   the main one: BRCA1 SGE 0.983 to 0.944 (0.86 to 1.00), BRCA1 HDR 0.861 to 0.735 (0.45 to
