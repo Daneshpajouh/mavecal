@@ -17,3 +17,4 @@ First release.
 - Snakemake 9 workflow with schema-validated config, per-rule logs and benchmarks, run
   manifests, local and Slurm profiles, and a container pinned by digest.
 - 63 pytest tests and 8 Snakemake rule tests on synthetic data.
+- A results report (docs/report.md) and a ten-slide offline deck (docs/slides/slides.html).

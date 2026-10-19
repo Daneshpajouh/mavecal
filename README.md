@@ -101,6 +101,8 @@ docs/            analysis plan, report, methods, validation, limitations, data s
 - [docs/analysis_plan.md](docs/analysis_plan.md): the plan, committed before any score was
   joined to a label (commit 61bc081).
 - [docs/report.md](docs/report.md): results and their context in published MAVE calibrations.
+- [docs/slides/slides.html](docs/slides/slides.html): ten slides for a non-specialist audience;
+  opens offline, rebuilt by `docs/slides/build_slides.py`.
 - [docs/methods.md](docs/methods.md), [docs/validation.md](docs/validation.md),
   [docs/limitations.md](docs/limitations.md), [docs/data_sources.md](docs/data_sources.md),
   [docs/testing.md](docs/testing.md), [docs/logging.md](docs/logging.md).
