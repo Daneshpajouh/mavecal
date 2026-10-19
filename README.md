@@ -91,6 +91,9 @@ $ docker run --rm -e MAVECAL_DATA_DIR=/data -v /path/to/data:/data \
     -v "$PWD/results:/opt/mavecal/results" mavecal:2.0.0
 ```
 
+The release workflow publishes the same image as `ghcr.io/daneshpajouh/mavecal:2.0.0`
+after running the test suite inside it.
+
 ## Layout
 
 ```
