@@ -57,7 +57,7 @@ six MaveDB score sets (8 MB) through the MaveDB API.
 
 ```console
 $ python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
-$ make test           # 63 tests on synthetic data, about 30 s
+$ make test           # 74 tests on synthetic data, about 30 s (about a minute on the first run)
 $ make rule-tests     # 8 Snakemake rule tests
 ```
 
@@ -71,6 +71,10 @@ $ .venv/bin/snakemake --profile profiles/local
 79 of 79 steps (100%) done
 $ .venv/bin/snakemake --report results/snakemake_report.html
 ```
+
+From the next release the run records Snakemake's own last progress line in
+`results/run/manifest_end.json` as `"steps": {"done": ..., "total": ...}`, so the step count
+can be checked. The 79 above is from the 1.0.0 run, before this field existed.
 
 `data_dir` can also be set with `--config data_dir=/path`, or `data` in the repository root can be
 a symlink to it. On a Slurm cluster use
@@ -94,6 +98,7 @@ src/mavecal/     the statistics, ClinVar and MaveDB parsing, and plotting
 tests/           pytest suite and synthetic test data
 .tests/          Snakemake integration config and generated rule tests
 results/         tables, figures, matched controls and run manifests from the 2026-10-19 run
+                 (the Snakemake HTML report is attached to the release, not kept in git)
 docs/            analysis plan, report, methods, validation, limitations, data sources,
                  testing and logging notes
 ```

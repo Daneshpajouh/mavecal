@@ -17,6 +17,9 @@ SVG output differs between runs.
 
 ## Results on 2026-10-19
 
+The branch after 1.0.0 on the same machine, 2026-10-19: 74 tests passed in 28 s and the 8 rule
+tests passed. The record below is from 1.0.0.
+
 macOS 27 (arm64), Python 3.13.9, 63 tests in 31 s:
 
 ```console

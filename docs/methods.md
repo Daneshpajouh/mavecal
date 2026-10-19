@@ -19,7 +19,8 @@ Pathogenic means a `ClinicalSignificance` of Pathogenic, Likely pathogenic or
 Pathogenic/Likely pathogenic, benign the three benign equivalents; anything with an extra term
 (for example "; risk factor") is excluded. Stars follow ClinVar's review-status table. Only
 missense changes on the gene's reference transcript count, read from the protein change in the
-`Name` column.
+`Name` column. Changes at the initiator Met1 are left out: they remove the start codon rather
+than substitute one residue in the protein the assay measures.
 
 Protein-level score sets are joined on the protein change. When several SNVs encode the same
 amino acid change, the change is pathogenic if at least one eligible SNV is pathogenic and none

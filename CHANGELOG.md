@@ -4,6 +4,23 @@ Versions follow semantic versioning: a major version changes the analysis or the
 result tables, a minor version adds score sets or analyses, a patch fixes code without changing
 results.
 
+## Unreleased
+
+Leaving out start-loss controls changes the control sets, so under the rule above this is a
+major version. The tables, figures and report numbers are still those of 1.0.0 and need a rerun.
+
+- Start-loss changes at Met1 no longer count as missense (ClinVar and MaveDB keys). In the 1.0.0
+  run this removes 5 pathogenic BRCA1 SGE controls and 1 pathogenic PTEN abundance control.
+- The logistic fit raises when Newton-Raphson does not converge, and the calibration slope and
+  intercept are then reported as missing instead of the last iterate.
+- The end-of-run manifest records Snakemake's last progress line (steps done and total).
+- Python 3.13 declared throughout (requires-python and ruff target), as tested.
+- The Snakemake HTML report (4 MB) is attached to the release instead of kept in git.
+- Report and README: BRCA1 HDR strength moves both ways on 2018 labels; 2018 AUCs given with
+  intervals beside the S4 rebuild; no interval where a class has fewer than 10 controls; P1
+  counts indeterminate readouts; the misclassified-control wording and the MaveDB OddsPath
+  values are marked as not yet checked at source.
+
 ## 1.0.0 (2026-10-19)
 
 First release.

@@ -17,3 +17,5 @@ dist/
 .tests/integration/results/
 .tests/integration/logs/
 data
+# Generated 4 MB HTML report: attached to the GitHub release, not kept in git.
+results/snakemake_report.html
