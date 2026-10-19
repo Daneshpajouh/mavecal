@@ -4,7 +4,9 @@ Versions follow semantic versioning: a major version changes the analysis or the
 result tables, a minor version adds score sets or analyses, a patch fixes code without changing
 results.
 
-## Unreleased
+## 2.0.0 (2026-10-19)
+
+Renamed from mave-clinvar-calibration to mavecal.
 
 Leaving out start-loss controls changes the control sets, so under the rule above this is a
 major version. The rerun of 2026-10-19 regenerated the tables, figures and report numbers; only

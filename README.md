@@ -86,9 +86,9 @@ container image passed the tests and the offline workflow run (docs/testing.md);
 analysis was run in the virtual environment, not in the container. To run it there:
 
 ```console
-$ docker build -t mavecal:1.0.0 .
+$ docker build -t mavecal:2.0.0 .
 $ docker run --rm -e MAVECAL_DATA_DIR=/data -v /path/to/data:/data \
-    -v "$PWD/results:/opt/mavecal/results" mavecal:1.0.0
+    -v "$PWD/results:/opt/mavecal/results" mavecal:2.0.0
 ```
 
 ## Layout
