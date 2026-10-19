@@ -1,0 +1,12 @@
+{
+  "title": "mave-clinvar-calibration: calibrating MaveDB assay scores against ClinVar labels",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "creators": [{"name": "Daneshpajouh, Amir"}],
+  "description": "Snakemake workflow and Python package that measures how well six multiplexed assays of variant effect (BRCA1, TP53, PTEN, MSH2) separate ClinVar pathogenic from benign missense variants, and estimates OddsPath evidence strength following Brnich et al. (2019), with checks for labels that may rest on the assays themselves. Research use only.",
+  "keywords": ["MAVE", "MaveDB", "ClinVar", "variant interpretation", "OddsPath", "Snakemake"],
+  "related_identifiers": [
+    {"identifier": "10.1186/s13073-019-0690-2", "relation": "references", "scheme": "doi"}
+  ]
+}

@@ -16,3 +16,4 @@ dist/
 .tests/integration/data/
 .tests/integration/results/
 .tests/integration/logs/
+data

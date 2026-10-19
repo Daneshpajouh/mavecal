@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it as below.
+title: "mave-clinvar-calibration: calibrating MaveDB assay scores against ClinVar labels"
+version: 1.0.0
+date-released: 2026-10-19
+license: Apache-2.0
+type: software
+authors:
+  - family-names: Daneshpajouh
+    given-names: Amir
+references:
+  - type: article
+    title: Recommendations for application of the functional evidence PS3/BS3 criterion using the ACMG/AMP sequence variant interpretation framework
+    authors:
+      - family-names: Brnich
+        given-names: Sarah E.
+    journal: Genome Medicine
+    year: 2019
+    doi: 10.1186/s13073-019-0690-2
