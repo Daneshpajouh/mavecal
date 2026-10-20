@@ -4,9 +4,12 @@
 
 `docs/analysis_plan.md` was committed as 61bc081 at 11:19 Pacific on 2026-10-19, before the
 first workflow run (11:27). Its SHA-256 is
-`30246cf38de8f2acfcea9dc5ab54dd85f73c6dcf03d48680e71ad055ca7c87b6`; the file has not changed
-since, and every run manifest records the hash it saw. Clarifications made after registration are
-recorded in `analysis_plan_amendments.md`, not in the plan. Before writing it I had read MaveDB
+`30246cf38de8f2acfcea9dc5ab54dd85f73c6dcf03d48680e71ad055ca7c87b6`. Commit 19c8f1f (13:23)
+edited the wording of plan item 4 in place and 312dc7c (14:24) restored the registered text.
+The committed results come from a run at 13:47 (commit 8262a14) that read the edited copy, so
+`results/run/manifest_start.json` records its hash, `cdfde3711b86...`. The edit touched the P1
+definition and the misclassified-control sentence only; both are now amendments 1 and 2 in
+`analysis_plan_amendments.md`, where clarifications made after registration are recorded. Before writing it I had read MaveDB
 score set records and method text (to fix directions and published class boundaries) and the
 ClinVar column headers, but no join of scores to labels.
 
