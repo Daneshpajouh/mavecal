@@ -7,7 +7,13 @@ import math
 import numpy as np
 import pytest
 
-from mavecal.calibration import NotConverged, calibration_stats, crossfit_probabilities, fit_logistic
+from mavecal.calibration import (
+    NotConverged,
+    calibration_stats,
+    crossfit_probabilities,
+    fit_logistic,
+    reliability_bins,
+)
 
 
 def test_overlapping_classes_fit_a_finite_slope() -> None:
@@ -61,3 +67,23 @@ def test_crossfit_runs_on_separated_scores() -> None:
     prob = crossfit_probabilities(scores, labels, n_folds=5, seed=7)
     assert np.all(np.isfinite(prob))
     assert prob[labels == 1].min() > prob[labels == 0].max()
+
+
+def test_reliability_bins_count_and_wilson_interval() -> None:
+    # 40 controls give 4 bins of 10; the top bin holds 7 pathogenic of 10.
+    prob = np.linspace(0.01, 0.99, 40)
+    y = np.r_[np.zeros(10), np.zeros(8), np.ones(2), np.zeros(5), np.ones(5), np.zeros(3), np.ones(7)]
+    rows = reliability_bins(prob, y)
+    assert [r["n"] for r in rows] == [10, 10, 10, 10]
+    assert [r["observed"] for r in rows] == [0.0, 0.2, 0.5, 0.7]
+    # Wilson 95% interval for 5 of 10, worked by hand: 0.2366 to 0.7634.
+    assert rows[2]["obs_lo"] == pytest.approx(0.2366, abs=1e-4)
+    assert rows[2]["obs_hi"] == pytest.approx(0.7634, abs=1e-4)
+
+
+def test_reliability_bins_all_probabilities_tied() -> None:
+    rows = reliability_bins(np.full(30, 0.5), np.r_[np.ones(15), np.zeros(15)])
+    assert len(rows) == 1
+    assert rows[0]["n"] == 30 and rows[0]["observed"] == 0.5
+    # Wilson 95% interval for 15 of 30: 0.3315 to 0.6685.
+    assert rows[0]["obs_lo"] == pytest.approx(0.3315, abs=1e-4)

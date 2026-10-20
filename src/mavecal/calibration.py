@@ -80,6 +80,9 @@ def reliability_bins(prob: ArrayLike, labels: ArrayLike, n_bins: int = 10) -> li
     y = np.asarray(labels, dtype=float)
     bins = max(2, min(n_bins, p.size // 10))
     edges = np.unique(np.quantile(p, np.linspace(0, 1, bins + 1)))
+    if edges.size == 1:
+        # Every probability is the same: one bin, not none.
+        edges = np.repeat(edges, 2)
     which = np.clip(np.searchsorted(edges, p, side="right") - 1, 0, edges.size - 2)
     rows = []
     for k in range(edges.size - 1):
