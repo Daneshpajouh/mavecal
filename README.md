@@ -60,7 +60,7 @@ six MaveDB score sets (8 MB) through the MaveDB API.
 
 ```console
 $ python3.13 -m venv .venv && .venv/bin/pip install -e ".[dev]"
-$ make test           # 74 tests on synthetic data, about 30 s (about a minute on the first run)
+$ make test           # 89 tests on synthetic data, about 35 s (about a minute on the first run)
 $ make rule-tests     # 8 Snakemake rule tests
 ```
 
