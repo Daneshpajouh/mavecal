@@ -8,7 +8,7 @@ The plan defines P1 as the proportion pathogenic among all controls with a reado
 
 ## 2. The added misclassified control (2026-10-19)
 
-The plan says one misclassified control is added to each readout set, as Brnich et al. (2019) did to avoid zero and infinite odds. That description has not yet been checked against the paper's text; until it is, read it as the method the code implements (`src/mavecal/oddspath.py`), not as a quotation of the paper.
+The plan says one misclassified control is added to each readout set, as Brnich et al. (2019) did to avoid zero and infinite odds. Checked against the paper on 2026-10-19 (full text through Europe PMC, PMC6938631, CC BY 4.0): its Methods say "To circumvent posterior probabilities of zero or infinity, and to account for the possibility that the next variant tested in the assay might have a discordant result, we added exactly one misclassified variant to each set", where the sets are the groups with abnormal and with normal readouts. The paper did this for modelled control sets; this analysis does it for the observed ones, as `src/mavecal/oddspath.py` implements.
 
 ## 3. Number of reliability bins (2026-10-19)
 

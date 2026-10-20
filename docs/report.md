@@ -133,12 +133,15 @@ noise of its own. A one-year shift in release (S2) moves no AUC by more than 0.0
 
 ## Published calibrations of the same assays
 
-MaveDB records OddsPath values from earlier calibrations for some of these score sets (the
-values below are not yet checked against each MaveDB record; record links and read dates
-will be added when they are). For BRCA1 SGE with the same
-class boundaries, the IGVF Coding Variant Focus Group missense calibration records OddsPath 74.6
-(abnormal) and 0.0168 (normal), and Fayer et al. (2021) record 52.4 and 0.02. For MSH2, the
-IGVF missense calibration records 71.1 and 0.0483, and Scott et al. (2022) 24.9 and 0.043. The
+MaveDB records OddsPath values from earlier calibrations for some of these score sets. The values
+below are as each record's calibrations page shows them, rounded to two decimals there, read on
+2026-10-19: [BRCA1 SGE](https://www.mavedb.org/score-sets/urn:mavedb:00000097-0-2/calibrations)
+and [MSH2](https://www.mavedb.org/score-sets/urn:mavedb:00000050-a-1/calibrations). For BRCA1 SGE
+with the same class boundaries, the IGVF Coding Variant Focus Group calibration with missense
+controls only records OddsPath 74.59 (abnormal) and 0.02 (normal), and Fayer et al. (2021)
+record 52.40 and 0.02. For MSH2, the IGVF missense calibration records 71.11 and 0.05, and Scott
+et al. (2022) 24.90 and 0.04 (with an abnormal class from 0.40 up, not from 0). All four record
+PS3 strong on the abnormal side and BS3 strong on the normal side. The
 raw T2 estimates here are 21.5 and 0.0072 (BRCA1 SGE) and 46.8 and 0.136 (MSH2). On the normal side the
 strength agrees for BRCA1 SGE (BS3) but not for MSH2 (moderate here, strong in both earlier
 calibrations). The abnormal-side estimates here are lower because the control set
