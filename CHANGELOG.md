@@ -6,9 +6,11 @@ results.
 
 ## Unreleased
 
-Only the nucleotide-join fix could change a committed result, and only if the BRCA1 SGE score
-set has two rows for one allele; that was not checked, because the MaveDB download is not in
-the repository. The other cases do not occur in the 2026-10-19 run.
+No committed result changes. Checked on the 2026-10-19 downloads: no allele in the BRCA1 SGE
+score set has two score rows, and the nucleotide join returns the same variants, scores and
+labels as 2.0.0 for the 2018-01, 2025-10 and 2026-10 releases at 0, 1 and 2 stars; no main
+analysis table has a repeated score, so the ROC figures are unchanged. The other cases do not
+occur in the 2026-10-19 run.
 
 - An abnormal readout is never quoted as BS3 evidence, nor a normal readout as PS3; an OddsPath
   on the wrong side of 1 for its readout is indeterminate.
