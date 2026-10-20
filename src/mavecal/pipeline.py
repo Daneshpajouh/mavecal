@@ -13,6 +13,7 @@ import pandas as pd
 
 from . import clinvar, matching, mavedb
 from .analysis import Settings, evaluate
+from .calibration import BIN_COLUMNS
 from .stats import holm
 
 log = logging.getLogger("mavecal")
@@ -101,7 +102,8 @@ def run_evaluate(
     log.info("summary: %s", summary)
     out_summary.write_text(json.dumps(summary, indent=1, sort_keys=True, default=str))
     per_variant.to_csv(out_variants, sep="\t", index=False)
-    pd.DataFrame(bins).to_csv(out_bins, sep="\t", index=False)
+    # Without cross-fitting there are no bins; the header still says what the file holds.
+    pd.DataFrame(bins, columns=list(BIN_COLUMNS)).to_csv(out_bins, sep="\t", index=False)
 
 
 def aggregate(summaries: list[Path], match_stats: list[Path], out_summary: Path, out_matching: Path) -> None:

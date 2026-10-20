@@ -120,6 +120,24 @@ def test_aggregate_without_p_values_adjusts_nothing(tmp_path: Path) -> None:
     assert summary["p_holm_primary"].isna().all()
 
 
+def test_reliability_file_keeps_its_header_without_cross_fitting(tmp_path: Path) -> None:
+    matched = tmp_path / "m.tsv"
+    pd.DataFrame(
+        {
+            "variant": [f"v{i}" for i in range(6)],
+            "score": [0.1, 0.4, 0.9, 1.2, 1.5, 2.0],
+            "label": ["B", "B", "B", "P", "P", "P"],
+        }
+    ).to_csv(matched, sep="\t", index=False)
+    st = Settings("higher_is_abnormal", 200, 1, 5, 5, 10, 1)
+    bins = tmp_path / "b.tsv"
+    pipeline.run_evaluate(matched, ROW, st, tmp_path / "s.json", tmp_path / "v.tsv", bins)
+    assert json.loads((tmp_path / "s.json").read_text())["t1_status"] == "too few controls for cross-fitting"
+    table = pd.read_csv(bins, sep="\t")
+    assert table.columns.tolist() == ["bin", "n", "mean_predicted", "observed", "obs_lo", "obs_hi"]
+    assert table.empty
+
+
 def test_roc_curve_area_equals_auc_with_ties() -> None:
     # A pathogenic and a benign control with the same score: the curve must step diagonally.
     fpr, tpr = plots.roc_points(np.array([1.0, 1.0]), np.array([1, 0]))

@@ -74,6 +74,9 @@ def calibration_stats(prob: ArrayLike, labels: ArrayLike) -> dict[str, float]:
     return {"brier": brier, "cal_intercept": a, "cal_slope": b}
 
 
+BIN_COLUMNS = ("bin", "n", "mean_predicted", "observed", "obs_lo", "obs_hi")
+
+
 def reliability_bins(prob: ArrayLike, labels: ArrayLike, n_bins: int = 10) -> list[dict[str, float]]:
     """Quantile bins of predicted probability with observed fraction and Wilson 95% interval."""
     p = np.asarray(prob, dtype=float)
