@@ -21,6 +21,12 @@ occur in the 2026-10-19 run.
 - ROC curves step diagonally through tied scores, so their area is the reported AUC.
 - Plan amendment 3 records the reliability bin rule; validation.md names the plan copy the
   committed run read.
+- A tagged release also runs the Snakemake rule tests before it publishes anything.
+- The README shows the AUC figure from the committed run and starts the quick start with the
+  clone. The tables say "interval not quoted" for classes under 10 controls, since the figure
+  and summary.tsv do carry those intervals.
+- A cross-fitting test now uses overlapping classes and fails if a fold's threshold is fit on
+  all rows or on the fold itself; the old test passed on both.
 
 ## 2.0.0 (2026-10-19)
 

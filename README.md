@@ -65,8 +65,12 @@ Python 3.13, the only version CI tests (Ubuntu). Ubuntu 24.04 ships Python 3.12,
 rejects (`requires-python >=3.13`), so install 3.13 first. On Python 3.14, pip builds one
 Snakemake dependency, `immutables`, from source and needs a C compiler. The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
 six MaveDB score sets (8 MB) through the MaveDB API.
+The wheel and source archive that the release workflow builds hold the `mavecal` Python package
+and its tests only; the workflow, config and analysis plan run from a clone.
 
 ```console
+$ git clone https://github.com/Daneshpajouh/mavecal.git
+$ cd mavecal
 $ python3.13 -m venv .venv && .venv/bin/pip install -e ".[dev]"
 $ make test           # 90 tests on synthetic data, about 35 s (about a minute on the first run)
 $ make rule-tests     # 8 Snakemake rule tests

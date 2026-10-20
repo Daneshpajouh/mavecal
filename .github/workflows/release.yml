@@ -22,7 +22,7 @@ jobs:
         run: |
           python -m venv .venv
           .venv/bin/pip install -e ".[dev]" build
-          make lint test
+          make lint test rule-tests
       - name: Build sdist and wheel
         run: .venv/bin/python -m build
       - name: Publish GitHub release
