@@ -50,7 +50,10 @@ def test_pipeline_functions(tmp_path: Path) -> None:
     pipeline.run_evaluate(table, ROW, st, out, tmp_path / "v.tsv", tmp_path / "b.tsv")
     s = json.loads(out.read_text())
     assert s["n_pathogenic"] == 12 and s["n_benign"] == 12
-    assert 0.5 < s["auc"] <= 1.0
+    # 12 pathogenic and 12 benign controls make 144 pairs. The benign score -0.0828 is above the two lowest
+    # pathogenic scores (-0.1407, -0.105) and the benign 0.3041 is above the four lowest (up to 0.2395): 6 pairs
+    # lost, no ties.
+    assert s["auc"] == pytest.approx(138 / 144)
     assert s["auc_lo"] <= s["auc"] <= s["auc_hi"]
     assert s["t1_p_abnormal"] + s["t1_p_normal"] == 12
     per_variant = pd.read_csv(tmp_path / "v.tsv", sep="\t")
