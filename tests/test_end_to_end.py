@@ -100,6 +100,23 @@ def test_aggregate_and_figures(tmp_path: Path) -> None:
     assert "INFO" in (tmp_path / "log.txt").read_text()
 
 
+def test_aggregate_without_p_values_adjusts_nothing(tmp_path: Path) -> None:
+    d = tmp_path / "toy_tp53"
+    d.mkdir()
+    summary_row = {"status": "too_few_controls", "n_benign": 2, "n_pathogenic": 1}
+    match = {"score_rows": 3, "assay_keys": 3, "matched": 3, "by_label": {"P": 1, "B": 2}, "by_method": {"hgvs_p": 3}}
+    summaries, stats = [], []
+    for analysis in ("main", "x"):
+        (d / f"{analysis}.json").write_text(json.dumps(summary_row))
+        (d / f"{analysis}.match.json").write_text(json.dumps(match))
+        summaries.append(d / f"{analysis}.json")
+        stats.append(d / f"{analysis}.match.json")
+    pipeline.aggregate(summaries, stats, tmp_path / "summary.tsv", tmp_path / "matching.tsv")
+    summary = pd.read_csv(tmp_path / "summary.tsv", sep="\t")
+    assert summary["analysis"].tolist() == ["main", "x"]
+    assert summary["p_holm_primary"].isna().all()
+
+
 def test_roc_curve_area_equals_auc_with_ties() -> None:
     # A pathogenic and a benign control with the same score: the curve must step diagonally.
     fpr, tpr = plots.roc_points(np.array([1.0, 1.0]), np.array([1, 0]))
