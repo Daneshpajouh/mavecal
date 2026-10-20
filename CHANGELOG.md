@@ -4,6 +4,22 @@ Versions follow semantic versioning: a major version changes the analysis or the
 result tables, a minor version adds score sets or analyses, a patch fixes code without changing
 results.
 
+## Unreleased
+
+Only the nucleotide-join fix could change a committed result, and only if the BRCA1 SGE score
+set has two rows for one allele; that was not checked, because the MaveDB download is not in
+the repository. The other cases do not occur in the 2026-10-19 run.
+
+- An abnormal readout is never quoted as BS3 evidence, nor a normal readout as PS3; an OddsPath
+  on the wrong side of 1 for its readout is indeterminate.
+- The nucleotide join averages score rows that share an allele instead of keeping the first.
+- Genomic keys on NC_000023 and NC_000024 use ClinVar's X and Y.
+- A header-only score set gives no keys instead of a KeyError.
+- Tied out-of-fold probabilities give one reliability bin instead of none.
+- ROC curves step diagonally through tied scores, so their area is the reported AUC.
+- Plan amendment 3 records the reliability bin rule; validation.md names the plan copy the
+  committed run read.
+
 ## 2.0.0 (2026-10-19)
 
 Renamed from mave-clinvar-calibration to mavecal.
