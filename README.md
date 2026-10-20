@@ -108,6 +108,17 @@ $ docker run --rm -e MAVECAL_DATA_DIR=/data -v /path/to/data:/data \
 The release workflow publishes the same image as `ghcr.io/daneshpajouh/mavecal:2.0.0`
 after running the test suite inside it.
 
+The release workflow does not build the Snakemake HTML report: the report needs the full run and
+its ClinVar data, which CI does not have. After a run, `make report` writes
+`results/snakemake_report.html`, and it is uploaded to the release by hand. The 2.0.0 release
+carries it as `mavecal-2.0.0-snakemake_report.html`.
+
+```console
+$ make report
+$ cp results/snakemake_report.html mavecal-2.0.0-snakemake_report.html
+$ gh release upload v2.0.0 mavecal-2.0.0-snakemake_report.html
+```
+
 ## Layout
 
 ```
@@ -118,7 +129,8 @@ src/mavecal/     the statistics, ClinVar and MaveDB parsing, and plotting
 tests/           pytest suite and synthetic test data
 .tests/          Snakemake integration config and generated rule tests
 results/         tables, figures, matched controls and run manifests from the 2026-10-19 run
-                 (the Snakemake HTML report is attached to the release, not kept in git)
+                 (the Snakemake HTML report is not kept in git; it is uploaded to each release
+                 by hand, see Running it)
 docs/            analysis plan, report, methods, validation, limitations, data sources,
                  testing and logging notes
 ```
