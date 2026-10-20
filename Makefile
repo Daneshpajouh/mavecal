@@ -3,8 +3,10 @@ SMK ?= .venv/bin/snakemake
 
 .PHONY: venv lint test rule-tests run report image clean-test
 
+PYTHON ?= python3.13
+
 venv:
-	python3 -m venv .venv && $(PY) -m pip install -e ".[dev]"
+	$(PYTHON) -m venv .venv && $(PY) -m pip install -e ".[dev]"
 
 lint:
 	$(PY) -m ruff check src tests workflow/scripts

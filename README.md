@@ -53,12 +53,13 @@ The full results, with intervals, are in [docs/report.md](docs/report.md).
 
 ## Running it
 
-Python 3.13 (on Python 3.14, pip builds one Snakemake dependency, `immutables`, from source and
-needs a C compiler). The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
+Python 3.13, the only version CI tests (Ubuntu). Ubuntu 24.04 ships Python 3.12, which pip
+rejects (`requires-python >=3.13`), so install 3.13 first. On Python 3.14, pip builds one
+Snakemake dependency, `immutables`, from source and needs a C compiler. The workflow reads four ClinVar files from three monthly releases (1.25 GB) and downloads
 six MaveDB score sets (8 MB) through the MaveDB API.
 
 ```console
-$ python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
+$ python3.13 -m venv .venv && .venv/bin/pip install -e ".[dev]"
 $ make test           # 74 tests on synthetic data, about 30 s (about a minute on the first run)
 $ make rule-tests     # 8 Snakemake rule tests
 ```
@@ -74,11 +75,11 @@ $ .venv/bin/snakemake --profile profiles/local
 $ .venv/bin/snakemake --report results/snakemake_report.html
 ```
 
-Since 2.0.0 the run records Snakemake's own last progress line in
-`results/run/manifest_end.json` as `"steps": {"done": ..., "total": ...}`, so the step count
-can be checked. The 79 above is from the 1.0.0 run, before this field existed. The committed
-results come from a rerun with `--forcerun filter_clinvar` that reused the six MaveDB
-downloads, so its manifest records 73 of 73 steps (79 less the six `fetch_mavedb` jobs).
+`results/run/manifest_end.json` records Snakemake's last progress line as
+`"steps": {"done": ..., "total": ...}`. The 79 above is from the 1.0.0 run, before that field
+existed. The committed results come from a rerun with `--forcerun filter_clinvar` at commit
+8262a14 that reused the six MaveDB downloads. Its manifest records 73 of 73 steps (79 less the
+six `fetch_mavedb` jobs) and mavecal 1.0.0, because the version became 2.0.0 after that run.
 
 `data_dir` can also be set with `--config data_dir=/path`, or `data` in the repository root can be
 a symlink to it. On a Slurm cluster use
