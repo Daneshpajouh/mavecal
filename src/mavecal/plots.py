@@ -27,8 +27,12 @@ ANALYSIS_LABELS = {
 def roc_points(oriented: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     order = np.argsort(-oriented, kind="mergesort")
     ys = y[order]
-    tpr = np.r_[0.0, np.cumsum(ys) / max(ys.sum(), 1)]
-    fpr = np.r_[0.0, np.cumsum(1 - ys) / max((1 - ys).sum(), 1)]
+    # One point per distinct score, so a tie between classes is a diagonal step whatever
+    # the row order, and the area under the curve is the AUC with ties counted one half.
+    s = oriented[order]
+    last = np.r_[s[1:] != s[:-1], True] if s.size else np.zeros(0, dtype=bool)
+    tpr = np.r_[0.0, np.cumsum(ys)[last] / max(ys.sum(), 1)]
+    fpr = np.r_[0.0, np.cumsum(1 - ys)[last] / max((1 - ys).sum(), 1)]
     return fpr, tpr
 
 

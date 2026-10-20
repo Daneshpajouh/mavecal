@@ -5,11 +5,14 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
+import pytest
 
 from mavecal import pipeline, plots
 from mavecal.analysis import Settings
 from mavecal.logs import setup_logging
+from mavecal.stats import auc
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "tests" / "data"
@@ -95,3 +98,14 @@ def test_aggregate_and_figures(tmp_path: Path) -> None:
     for name in ("f.png", "f.svg", "forest.png", "forest.svg"):
         assert (tmp_path / name).stat().st_size > 1000
     assert "INFO" in (tmp_path / "log.txt").read_text()
+
+
+def test_roc_curve_area_equals_auc_with_ties() -> None:
+    # A pathogenic and a benign control with the same score: the curve must step diagonally.
+    fpr, tpr = plots.roc_points(np.array([1.0, 1.0]), np.array([1, 0]))
+    assert fpr.tolist() == [0.0, 1.0] and tpr.tolist() == [0.0, 1.0]
+    rng = np.random.default_rng(4)
+    scores = np.round(rng.normal(0, 1, 200), 1)
+    y = (rng.uniform(size=200) < 0.5).astype(int)
+    fpr, tpr = plots.roc_points(scores, y)
+    assert np.trapezoid(tpr, fpr) == pytest.approx(auc(scores[y == 1], scores[y == 0]), abs=1e-12)
