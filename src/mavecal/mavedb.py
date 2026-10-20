@@ -74,12 +74,9 @@ def protein_keys(scores: pd.DataFrame, protein_accession: str) -> pd.DataFrame:
     substitution are dropped. Duplicate rows for one change are averaged.
     """
     base = protein_accession.split(".")[0]
-    mapped = scores["mavedb.post_mapped_hgvs_p"].fillna("")
-    parts = mapped.str.split(":", n=1, expand=True)
-    if parts.shape[1] < 2:
-        parts[1] = ""
-    acc = parts[0].str.split(".").str[0]
-    change = parts[1].fillna("").map(missense_change)
+    split = [v.partition(":") if isinstance(v, str) else ("", "", "") for v in scores["mavedb.post_mapped_hgvs_p"]]
+    acc = pd.Series([a.split(".")[0] for a, _, _ in split], index=scores.index, dtype=object)
+    change = pd.Series([missense_change(c) for _, _, c in split], index=scores.index, dtype=object)
     keep = (acc == base) & change.notna() & scores["scores.score"].notna()
     out = pd.DataFrame({"protein_change": change[keep], "score": scores.loc[keep, "scores.score"]})
     agg = out.groupby("protein_change", as_index=False).agg(score=("score", "mean"), n_score_rows=("score", "size"))

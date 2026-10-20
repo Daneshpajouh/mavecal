@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import io
 from datetime import date
 from pathlib import Path
 
@@ -160,3 +161,10 @@ def test_nucleotide_keys_name_sex_chromosomes_as_clinvar_does() -> None:
         }
     )
     assert list(mavedb.nucleotide_keys(scores)["chrom"]) == ["X", "Y", "2"]
+
+
+def test_protein_keys_header_only_score_set() -> None:
+    header = "accession,hgvs_nt,hgvs_pro,scores.score,mavedb.post_mapped_hgvs_g,mavedb.post_mapped_hgvs_p\n"
+    keys = mavedb.protein_keys(pd.read_csv(io.StringIO(header)), "NP_000537.3")
+    assert keys.empty
+    assert list(keys.columns) == ["protein_change", "score", "n_score_rows", "match_method"]
