@@ -111,12 +111,14 @@ after running the test suite inside it.
 The release workflow does not build the Snakemake HTML report: the report needs the full run and
 its ClinVar data, which CI does not have. After a run, `make report` writes
 `results/snakemake_report.html`, and it is uploaded to the release by hand. The 2.0.0 release
-carries it as `mavecal-2.0.0-snakemake_report.html`.
+carries it as `mavecal-2.0.0-snakemake_report.html`. Run the steps from a checkout of the tag
+being released: `git describe` gives that tag, and fails if the checkout is not on one.
 
 ```console
 $ make report
-$ cp results/snakemake_report.html mavecal-2.0.0-snakemake_report.html
-$ gh release upload v2.0.0 mavecal-2.0.0-snakemake_report.html
+$ tag=$(git describe --tags --exact-match)
+$ cp results/snakemake_report.html "mavecal-${tag#v}-snakemake_report.html"
+$ gh release upload "$tag" "mavecal-${tag#v}-snakemake_report.html"
 ```
 
 ## Layout

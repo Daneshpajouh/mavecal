@@ -31,6 +31,8 @@ occur in the 2026-10-19 run.
   source; the MaveDB OddsPath values in the report are checked against each record, given as
   the records show them, with links and the read date. A test keeps "not yet checked" notes out
   of the docs.
+- The README's report upload recipe takes the release tag from the checkout instead of naming
+  v2.0.0; a docs test checks that the recipe names no fixed version.
 
 ## 2.0.0 (2026-10-19)
 
