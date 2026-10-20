@@ -162,6 +162,9 @@ def _header_skip(path: Path) -> int:
 def labels_before(submissions: pd.DataFrame, cutoff: date) -> pd.DataFrame:
     """Rebuild a label and approximate stars from submissions evaluated before cutoff.
 
+    Two stars need agreeing criteria-provided assertions from two or more submitters,
+    as in ClinVar; two submissions from one submitter give one star (plan amendment 4).
+
     Only submissions with assertion criteria count. A variant keeps a label only if
     every such submission agrees on P/LP or on B/LB; any other class among them
     (for example uncertain significance) removes the label, as ClinVar would report
@@ -184,9 +187,17 @@ def labels_before(submissions: pd.DataFrame, cutoff: date) -> pd.DataFrame:
             stars = 4
         elif "reviewed by expert panel" in statuses:
             stars = 3
-        elif len(grp) >= 2:
+        elif grp["Submitter"].nunique() >= 2:
             stars = 2
         else:
             stars = 1
-        rows.append({"variation_id": vid, "label": labs.pop(), "stars": stars, "n_submissions": len(grp)})
-    return pd.DataFrame(rows, columns=["variation_id", "label", "stars", "n_submissions"])
+        rows.append(
+            {
+                "variation_id": vid,
+                "label": labs.pop(),
+                "stars": stars,
+                "n_submissions": len(grp),
+                "n_submitters": grp["Submitter"].nunique(),
+            }
+        )
+    return pd.DataFrame(rows, columns=["variation_id", "label", "stars", "n_submissions", "n_submitters"])
