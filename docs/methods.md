@@ -61,6 +61,7 @@ Scores are oriented by each assay's documented direction, never by the data, so 
   bound nearer to 1. No strength is quoted when either class has fewer than 10 controls.
 - Calibration: logistic regression of the label on the standardised oriented score, fit on four
   folds and applied to the fifth. Out-of-fold probabilities give the Brier score, a logistic
-  recalibration intercept and slope, and reliability bins (10 quantile bins, Wilson intervals).
+  recalibration intercept and slope, and reliability bins (quantile bins, Wilson intervals). Implementation detail: 10 bins when there
+  are at least 100 controls, otherwise one bin per 10 controls and at least 2 (amendment 3).
   Implementation detail: a ridge of 0.001 on the slope keeps the fit finite when the training
   folds separate perfectly.

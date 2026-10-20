@@ -9,3 +9,7 @@ The plan defines P1 as the proportion pathogenic among all controls with a reado
 ## 2. The added misclassified control (2026-10-19)
 
 The plan says one misclassified control is added to each readout set, as Brnich et al. (2019) did to avoid zero and infinite odds. That description has not yet been checked against the paper's text; until it is, read it as the method the code implements (`src/mavecal/oddspath.py`), not as a quotation of the paper.
+
+## 3. Number of reliability bins (2026-10-19)
+
+Plan item 6 asks for a reliability plot with 10 quantile bins. Since the package was first committed (58bbb7d) the code (`reliability_bins` in `src/mavecal/calibration.py`) has used 10 bins only when a control set has at least 100 controls, and otherwise one bin per 10 controls, with at least 2. This amendment records the code's rule as the one used. For the main analysis that means 4 bins for BRCA1 HDR (47 controls), 10 for BRCA1 SGE, TP53, MSH2 and PTEN abundance, and none for PTEN phosphatase, which is not cross-fitted. No published number changes, because the code was not changed.
