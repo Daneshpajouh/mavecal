@@ -6,7 +6,14 @@ import math
 
 import pytest
 
-from mavecal.oddspath import Readouts, evidence_strength, oddspath, oddspath_abnormal, oddspath_normal
+from mavecal.oddspath import (
+    Readouts,
+    evidence_strength,
+    oddspath,
+    oddspath_abnormal,
+    oddspath_normal,
+    readout_strength,
+)
 
 
 def test_formula_balanced_controls() -> None:
@@ -67,3 +74,19 @@ def test_brnich_worked_example_reaches_moderate() -> None:
 )
 def test_evidence_strength_boundaries(odds: float, level: str) -> None:
     assert evidence_strength(odds) == level
+
+
+@pytest.mark.parametrize(
+    ("odds", "readout", "level"),
+    [
+        (0.0, "abnormal", "indeterminate"),
+        (0.3, "abnormal", "indeterminate"),
+        (5.0, "abnormal", "PS3_moderate"),
+        (math.inf, "normal", "indeterminate"),
+        (3.0, "normal", "indeterminate"),
+        (0.1, "normal", "BS3_moderate"),
+        (math.nan, "normal", "not_estimated"),
+    ],
+)
+def test_readout_strength_keeps_the_readout_direction(odds: float, readout: str, level: str) -> None:
+    assert readout_strength(odds, readout) == level

@@ -80,3 +80,14 @@ def evidence_strength(odds: float) -> str:
     if odds < 0.48:
         return "BS3_supporting"
     return "indeterminate"
+
+
+def readout_strength(odds: float, readout: str) -> str:
+    """Table 3 level for one readout: PS3 levels for 'abnormal', BS3 levels for 'normal'.
+
+    An OddsPath on the wrong side of 1 for its readout, for example an abnormal set that
+    holds only the added benign control, is indeterminate, not evidence the other way.
+    """
+    level = evidence_strength(odds)
+    wrong = {"abnormal": "BS3", "normal": "PS3"}[readout]
+    return "indeterminate" if level.startswith(wrong) else level

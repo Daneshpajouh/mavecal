@@ -13,7 +13,7 @@ import pandas as pd
 from numpy.typing import NDArray
 
 from . import calibration as cal
-from .oddspath import Readouts, evidence_strength, oddspath_abnormal, oddspath_normal
+from .oddspath import Readouts, oddspath_abnormal, oddspath_normal, readout_strength
 from .stats import (
     auc,
     crossfit_youden,
@@ -104,10 +104,10 @@ def _odds_block(prefix: str, codes: NDArray[np.int64], y: NDArray[Any], st: Sett
             f"{prefix}_oddspath_abnormal_hi": abn_hi,
             f"{prefix}_oddspath_normal_lo": nor_lo,
             f"{prefix}_oddspath_normal_hi": nor_hi,
-            f"{prefix}_strength_abnormal_point": evidence_strength(out[f"{prefix}_oddspath_abnormal"]),
-            f"{prefix}_strength_normal_point": evidence_strength(out[f"{prefix}_oddspath_normal"]),
-            f"{prefix}_strength_abnormal": evidence_strength(abn_lo),
-            f"{prefix}_strength_normal": evidence_strength(nor_hi),
+            f"{prefix}_strength_abnormal_point": readout_strength(out[f"{prefix}_oddspath_abnormal"], "abnormal"),
+            f"{prefix}_strength_normal_point": readout_strength(out[f"{prefix}_oddspath_normal"], "normal"),
+            f"{prefix}_strength_abnormal": readout_strength(abn_lo, "abnormal"),
+            f"{prefix}_strength_normal": readout_strength(nor_hi, "normal"),
         }
     )
     return out

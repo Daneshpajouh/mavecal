@@ -111,3 +111,22 @@ def test_reader_errors_name_the_file(tmp_path: Path) -> None:
     bare.write_text("accession,scores.score\nx#1,0.5\n")
     with pytest.raises(ValueError, match=r"scores_only\.csv"):
         pipeline.match(bare, vcf_like, {"id": "x"}, {}, None, tmp_path / "o.tsv", tmp_path / "o.json")
+
+
+@pytest.mark.parametrize(
+    ("t2_abnormal", "t2_normal", "key"),
+    [
+        # Nothing called abnormal: the abnormal set holds only the added benign control.
+        (">10", "<=10", "t2_strength_abnormal"),
+        # Nothing called normal: the normal set holds only the added pathogenic control.
+        (">-10", "<=-10", "t2_strength_normal"),
+    ],
+)
+def test_readout_never_takes_the_opposite_evidence(t2_abnormal: str, t2_normal: str, key: str) -> None:
+    table = pd.DataFrame(
+        {"score": np.r_[np.linspace(1, 2, 12), np.linspace(-2, -1, 12)], "label": ["P"] * 12 + ["B"] * 12}
+    )
+    row, _, _ = evaluate(table, ST, t2_abnormal, t2_normal)
+    assert row["small"] is False
+    assert row[key] == "indeterminate"
+    assert row[key + "_point"] == "indeterminate"
