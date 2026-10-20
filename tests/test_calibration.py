@@ -8,6 +8,7 @@ import numpy as np
 import pytest
 
 from mavecal.calibration import (
+    BIN_COLUMNS,
     NotConverged,
     calibration_stats,
     crossfit_probabilities,
@@ -75,6 +76,7 @@ def test_reliability_bins_count_and_wilson_interval() -> None:
     y = np.r_[np.zeros(10), np.zeros(8), np.ones(2), np.zeros(5), np.ones(5), np.zeros(3), np.ones(7)]
     rows = reliability_bins(prob, y)
     assert [r["n"] for r in rows] == [10, 10, 10, 10]
+    assert all(tuple(r) == BIN_COLUMNS for r in rows)
     assert [r["observed"] for r in rows] == [0.0, 0.2, 0.5, 0.7]
     # Wilson 95% interval for 5 of 10, worked by hand: 0.2366 to 0.7634.
     assert rows[2]["obs_lo"] == pytest.approx(0.2366, abs=1e-4)
