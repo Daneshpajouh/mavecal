@@ -53,9 +53,14 @@ Scores are oriented by each assay's documented direction, never by the data, so 
 - OddsPath follows Brnich et al. (2019): P1 is the pathogenic fraction of all controls, indeterminate
   readouts included, P2 the pathogenic fraction among abnormal (or normal) readouts, and
   OddsPath = P2(1 - P1) / ((1 - P2) P1). One misclassified control is added to each readout set
-  before the estimate, following Brnich et al. (2019), so that no estimate is zero or infinite
-  (this wording is not yet checked against the paper); with 1 benign control
-  in an abnormal set this halves the estimate, so the raw value is in the tables too.
+  before the estimate, as Brnich et al. (2019) did: "To circumvent posterior probabilities of
+  zero or infinity, and to account for the possibility that the next variant tested in the assay
+  might have a discordant result, we added exactly one misclassified variant to each set"
+  (Methods; the sets are the groups with abnormal and with normal readouts; Genome Medicine 12:3,
+  doi:10.1186/s13073-019-0690-2, CC BY 4.0, full text read through Europe PMC, PMC6938631, on
+  2026-10-19). The paper applied it to modelled control sets; here it is applied to the observed
+  ones. With 1 benign control in an abnormal set this halves the estimate, so the raw value is in
+  the tables too.
   Intervals resample the readouts (2,000 replicates) with the thresholds held fixed.
 - Evidence strength uses Brnich et al. Table 3. The quoted strength comes from the interval
   bound nearer to 1. No strength is quoted when either class has fewer than 10 controls.

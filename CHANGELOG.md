@@ -27,6 +27,10 @@ occur in the 2026-10-19 run.
   and summary.tsv do carry those intervals.
 - A cross-fitting test now uses overlapping classes and fails if a fold's threshold is fit on
   all rows or on the fold itself; the old test passed on both.
+- The misclassified-control wording is checked against Brnich et al. (2019) and quoted with its
+  source; the MaveDB OddsPath values in the report are checked against each record, given as
+  the records show them, with links and the read date. A test keeps "not yet checked" notes out
+  of the docs.
 
 ## 2.0.0 (2026-10-19)
 
