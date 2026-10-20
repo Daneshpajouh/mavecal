@@ -112,7 +112,10 @@ def aggregate(summaries: list[Path], match_stats: list[Path], out_summary: Path,
         rows.append({"scoreset": scoreset, "analysis": analysis, **json.loads(path.read_text())})
     df = pd.DataFrame(rows)
     df["p_holm_primary"] = float("nan")
-    primary = (df["analysis"] == "main") & df["p_one_sided"].notna() if "p_one_sided" in df else df["analysis"] == "x"
+    if "p_one_sided" in df:
+        primary = (df["analysis"] == "main") & df["p_one_sided"].notna()
+    else:
+        primary = pd.Series(False, index=df.index)
     if primary.any():
         df.loc[primary, "p_holm_primary"] = holm(df.loc[primary, "p_one_sided"].astype(float).tolist())
     df.sort_values(["scoreset", "analysis"]).to_csv(out_summary, sep="\t", index=False)
