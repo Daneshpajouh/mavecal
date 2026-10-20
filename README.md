@@ -33,8 +33,8 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
 | BRCA1 saturation genome editing | 146 | 22 | 0.983 (0.953 to 1.000) | PS3_moderate | BS3 |
 | BRCA1 HDR reporter | 31 | 16 | 0.861 (0.736 to 0.968) | PS3_supporting | BS3_supporting |
 | TP53 nutlin-3 growth | 202 | 74 | 0.960 (0.935 to 0.982) | PS3_moderate | BS3_moderate |
-| PTEN lipid phosphatase | 142 | 3 | 0.965 (3 benign, no interval) | not estimated | not estimated |
-| PTEN abundance (VAMP-seq) | 107 | 5 | 0.824 (5 benign, no interval) | not quoted, 5 benign | not quoted, 5 benign |
+| PTEN lipid phosphatase | 142 | 3 | 0.965 (3 benign, interval not quoted) | not estimated | not estimated |
+| PTEN abundance (VAMP-seq) | 107 | 5 | 0.824 (5 benign, interval not quoted) | not quoted, 5 benign | not quoted, 5 benign |
 | MSH2 6-thioguanine resistance | 112 | 54 | 0.924 (0.871 to 0.967) | PS3_moderate | BS3_moderate |
 
 - Measured against these ClinVar controls, BRCA1 SGE, TP53 and MSH2 reach moderate evidence
@@ -48,6 +48,14 @@ thresholds; the strength quoted is the one the conservative end of the 95% inter
   0.91). Rebuilding labels from submissions made before each paper (S4) shows no drop for BRCA1
   SGE (0.984) and a drop for MSH2 (0.839, 8 benign controls). Neither check separates
   circularity from the smaller, older label sets, which also include 1-star records.
+
+![ROC AUC with 95% bootstrap interval for each score set and analysis](results/figures/auc_forest.png)
+
+ROC AUC with its 95% bootstrap interval for every score set and analysis: the main analysis in
+black, sensitivity analyses S1 to S4 in grey, with the pathogenic and benign control counts on
+each row. This is `results/figures/auc_forest.png` as the committed run wrote it. The figure
+draws the computed interval on every row; the tables quote none where a class has fewer than 10 controls,
+such as the PTEN rows, because a bootstrap from 3 to 8 controls says little.
 
 The full results, with intervals, are in [docs/report.md](docs/report.md).
 

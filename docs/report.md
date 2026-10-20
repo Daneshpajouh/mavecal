@@ -46,14 +46,15 @@ PTEN numbers below rest on 3 and 5 benign variants and should be read that way.
 | brca1_sge | 0.983 (0.953 to 1.000) | 0.940 to 1.000 | 6e-13 |
 | brca1_hdr | 0.861 (0.736 to 0.968) | 0.691 to 0.995 | 9e-05 |
 | tp53_nutlin | 0.960 (0.935 to 0.982) | 0.925 to 0.986 | 3e-31 |
-| pten_phosphatase | 0.965 (3 benign, no interval) | no interval | 0.0007 |
-| pten_abundance | 0.824 (5 benign, no interval) | no interval | 0.006 |
+| pten_phosphatase | 0.965 (3 benign, interval not quoted) | not quoted | 0.0007 |
+| pten_abundance | 0.824 (5 benign, interval not quoted) | not quoted | 0.006 |
 | msh2_lof | 0.924 (0.871 to 0.967) | 0.844 to 0.976 | 3e-18 |
 
 The simultaneous intervals of the four score sets with at least 10 controls per class all
-exclude 0.5. No interval is given where a class has fewer than 10 controls (PTEN: 3 and 5
+exclude 0.5. No interval is quoted where a class has fewer than 10 controls (PTEN: 3 and 5
 benign), the same rule the plan uses for evidence strength (analysis_plan.md item 7): a
-percentile bootstrap from 3 to 8 controls says little.
+percentile bootstrap from 3 to 8 controls says little. The intervals are still computed: they
+are in `results/tables/summary.tsv` and drawn in `results/figures/auc_forest.png`.
 
 ## OddsPath and evidence strength
 
@@ -105,13 +106,14 @@ assay here (earliest assay paper online 2018-04-26), at 1 or more stars as fixed
 | score set | main | S1 one star | S2 2025-10 | S3 2018-01 | S4 before publication |
 |---|---|---|---|---|---|
 | brca1_sge | 0.983 (0.95 to 1.00; 146/22) | 0.994 (0.98 to 1.00; 201/111) | 0.980 (0.94 to 1.00; 127/19) | 0.944 (0.86 to 1.00; 38/14) | 0.984 (0.95 to 1.00; 39/16) |
-| brca1_hdr | 0.861 (0.74 to 0.97; 31/16) | 0.879 (0.78 to 0.97; 39/34) | 0.846 (0.69 to 0.96; 26/16) | 0.735 (0.45 to 1.00; 11/12) | 0.818 (no interval; 11/6) |
-| tp53_nutlin | 0.960 (0.94 to 0.98; 202/74) | 0.935 (0.91 to 0.96; 224/149) | 0.962 (0.93 to 0.98; 175/71) | 0.912 (0.78 to 0.99; 108/11) | 1.000 (no interval; 12/3) |
-| pten_phosphatase | 0.965 (no interval; 142/3) | 0.946 (no interval; 197/5) | 0.971 (no interval; 116/3) | no benign (69/0) | no benign (5/0) |
-| pten_abundance | 0.824 (no interval; 107/5) | 0.703 (no interval; 150/8) | 0.826 (no interval; 85/5) | no benign (50/0) | no benign (2/0) |
-| msh2_lof | 0.924 (0.87 to 0.97; 112/54) | 0.943 (0.91 to 0.97; 139/287) | 0.913 (0.85 to 0.96; 100/50) | 0.807 (0.69 to 0.91; 58/20) | 0.839 (no interval; 49/8) |
+| brca1_hdr | 0.861 (0.74 to 0.97; 31/16) | 0.879 (0.78 to 0.97; 39/34) | 0.846 (0.69 to 0.96; 26/16) | 0.735 (0.45 to 1.00; 11/12) | 0.818 (interval not quoted; 11/6) |
+| tp53_nutlin | 0.960 (0.94 to 0.98; 202/74) | 0.935 (0.91 to 0.96; 224/149) | 0.962 (0.93 to 0.98; 175/71) | 0.912 (0.78 to 0.99; 108/11) | 1.000 (interval not quoted; 12/3) |
+| pten_phosphatase | 0.965 (interval not quoted; 142/3) | 0.946 (interval not quoted; 197/5) | 0.971 (interval not quoted; 116/3) | no benign (69/0) | no benign (5/0) |
+| pten_abundance | 0.824 (interval not quoted; 107/5) | 0.703 (interval not quoted; 150/8) | 0.826 (interval not quoted; 85/5) | no benign (50/0) | no benign (2/0) |
+| msh2_lof | 0.924 (0.87 to 0.97; 112/54) | 0.943 (0.91 to 0.97; 139/287) | 0.913 (0.85 to 0.96; 100/50) | 0.807 (0.69 to 0.91; 58/20) | 0.839 (interval not quoted; 49/8) |
 
-Cells read AUC (95% interval; pathogenic/benign). No interval where a class has fewer than 10 controls.
+Cells read AUC (95% interval; pathogenic/benign). No interval is quoted where a class has fewer
+than 10 controls; the computed intervals are in `results/tables/summary.tsv` and the AUC figure.
 
 Every score set that can be scored on 2018 labels has a lower point AUC on them, though each
 2018 interval overlaps the main one. The conservative evidence strength drops for three of the
