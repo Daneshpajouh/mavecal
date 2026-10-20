@@ -17,7 +17,7 @@ SVG output differs between runs.
 
 ## Results on 2026-10-19
 
-macOS 27 (arm64), Python 3.13.9, 89 tests in 33 s:
+macOS 27 (arm64), Python 3.13.9, 90 tests in 31 s:
 
 ```console
 $ .venv/bin/python -m pytest -p no:cacheprovider --cov=mavecal --cov-report=term
@@ -37,7 +37,7 @@ src/mavecal/plots.py            82      0   100%
 src/mavecal/stats.py            80      1    99%
 ------------------------------------------------
 TOTAL                          733     44    94%
-89 passed in 33.11s
+90 passed in 31.42s
 $ .venv/bin/python -m pytest .tests/unit -p no:cacheprovider
 8 passed
 ```

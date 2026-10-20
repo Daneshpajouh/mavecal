@@ -98,6 +98,23 @@ def test_folds_are_stratified() -> None:
         assert (1 - y[folds == k]).sum() == 3
 
 
+def test_crossfit_uses_only_the_other_folds() -> None:
+    # Overlapping classes, so the threshold depends on which rows it is fit on.
+    rng = np.random.default_rng(7)
+    scores = np.r_[rng.normal(1.0, 1.0, 30), rng.normal(-1.0, 1.0, 30)]
+    labels = np.r_[np.ones(30, int), np.zeros(30, int)]
+    abnormal, thresholds = crossfit_youden(scores, labels, 5, seed=3)
+    folds = stratified_folds(labels, 5, 3)
+    for k in range(5):
+        train = folds != k
+        expected = youden_threshold(scores[train], labels[train])
+        assert thresholds[k] == expected
+        assert np.array_equal(abnormal[~train], scores[~train] > expected)
+    # A threshold fit on all rows calls some rows differently, so code that
+    # skips cross-fitting fails this test.
+    assert not np.array_equal(abnormal, scores > youden_threshold(scores, labels))
+
+
 def test_crossfit_separable_data_is_called_correctly() -> None:
     scores = np.r_[np.linspace(5, 10, 20), np.linspace(-10, -5, 20)]
     labels = np.r_[np.ones(20, int), np.zeros(20, int)]

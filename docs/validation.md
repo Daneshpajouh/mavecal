@@ -25,7 +25,7 @@ reads 89.0; the plan already gave 0.89). No analysis in the plan was dropped or 
 - OddsPath reproduces the worked example in Brnich et al. (2019): 5 pathogenic and 6 benign
   controls, one benign indeterminate, gives 35/6 = 5.83, PS3_moderate, as the paper states.
 - Every boundary of the Table 3 mapping is tested on both sides.
-- The 89 pytest tests and 8 rule tests are described in [testing.md](testing.md).
+- The 90 pytest tests and 8 rule tests are described in [testing.md](testing.md).
 
 ## Checks on the data and joins
 
