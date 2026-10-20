@@ -1,5 +1,6 @@
 # Paths under clinvar are relative to data_dir unless absolute. Override data_dir with
-# MAVECAL_DATA_DIR or `--config data_dir=/path`; keep it outside the repository.
+# MAVECAL_DATA_DIR or `--config data_dir=/path` (the environment variable wins if both are
+# set); keep it outside the repository.
 data_dir: data
 results_dir: results
 scoresets: config/scoresets.tsv

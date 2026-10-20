@@ -82,7 +82,7 @@ existed. The committed results come from a rerun with `--forcerun filter_clinvar
 six `fetch_mavedb` jobs) and mavecal 1.0.0, because the version became 2.0.0 after that run.
 
 `data_dir` can also be set with `--config data_dir=/path`, or `data` in the repository root can be
-a symlink to it. On a Slurm cluster use
+a symlink to it. `MAVECAL_DATA_DIR`, when set, wins over both. On a Slurm cluster use
 `--profile profiles/slurm` after setting the account and partition in that file. The
 container image passed the tests and the offline workflow run (docs/testing.md); the real
 analysis was run in the virtual environment, not in the container. To run it there:
