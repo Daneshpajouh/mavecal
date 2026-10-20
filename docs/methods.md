@@ -27,7 +27,8 @@ amino acid change, the change is pathogenic if at least one eligible SNV is path
 is benign, and the reverse; changes with both are dropped (none occurred in the real data).
 Rows of a score set that map to the same change are averaged. The BRCA1 SGE score set is joined
 on the GRCh38 allele; its 1,039 rows without a post-mapped genomic HGVS fall back to the transcript c.
-HGVS, and none of them matched a missense control.
+HGVS, and none of them matched a missense control. Implementation detail: score rows that
+carry the same allele are averaged, as for protein changes.
 
 Labels for S4 come from `submission_summary`: submissions with assertion criteria whose
 `DateLastEvaluated` is before the assay's first online date. A variant keeps a label only if

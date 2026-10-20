@@ -128,3 +128,20 @@ def test_mavedb_missense_change_excludes_start_loss() -> None:
     assert mavedb.missense_change("p.Met1Thr") is None
     assert mavedb.missense_change("p.Arg175His") == "p.Arg175His"
     assert mavedb.missense_change("p.Met100Val") == "p.Met100Val"
+
+
+def test_match_nucleotide_averages_rows_for_one_allele() -> None:
+    # Two score rows for c.299G>A (p.Arg100Ala, pathogenic in the fixture): one keyed by the
+    # GRCh38 allele, one by the transcript c. HGVS. Both count, as duplicate protein rows do.
+    scores = pd.DataFrame(
+        {
+            "scores.score": [-2.0, 0.0],
+            "hgvs_nt": ["NM_000546.5:c.299G>A", "NM_000546.5:c.299G>A"],
+            "mavedb.post_mapped_hgvs_g": ["NC_000017.11:g.7670000G>A", None],
+        }
+    )
+    cv = clinvar.load_variant_summary(FIX / "variant_summary_tiny.txt.gz", ["TP53"])
+    out = matching.match_nucleotide(mavedb.nucleotide_keys(scores), cv, "NM_000546", min_stars=2)
+    assert len(out) == 1
+    assert out.loc[0, "score"] == -1.0
+    assert out.loc[0, "label"] == "P"

@@ -45,10 +45,14 @@ def match_nucleotide(keys: pd.DataFrame, clinvar: pd.DataFrame, transcript: str,
         elig, on=["transcript", "hgvs_c"], how="inner", suffixes=("", "_cv")
     )
     both = pd.concat([g, by_c], ignore_index=True)
-    both["variant"] = both["name"]
-    both["n_clinvar"] = 1
-    both["variation_ids"] = both["variation_id"]
-    both = both.drop_duplicates(subset=["variation_id"])
-    return both[["variant", "score", "label", "stars", "n_clinvar", "variation_ids", "match_method"]].reset_index(
-        drop=True
+    # Several score rows can carry one allele; average them, as protein_keys does for a change.
+    out = both.groupby("variation_id", as_index=False, sort=False).agg(
+        variant=("name", "first"),
+        score=("score", "mean"),
+        label=("label", "first"),
+        stars=("stars", "first"),
+        match_method=("match_method", "first"),
     )
+    out["n_clinvar"] = 1
+    out["variation_ids"] = out["variation_id"]
+    return out[["variant", "score", "label", "stars", "n_clinvar", "variation_ids", "match_method"]]
