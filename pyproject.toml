@@ -30,8 +30,8 @@ dev = [
   "snakemake==9.27.0",
   "snakefmt==2.1.0",
   "snakemake-executor-plugin-slurm==2.8.0",
-  "pandas-stubs",
-  "types-requests",
+  "pandas-stubs==3.0.5.260914",
+  "types-requests==2.33.0.20261006",
 ]
 
 [tool.setuptools.packages.find]
