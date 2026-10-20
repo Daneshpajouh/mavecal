@@ -16,7 +16,8 @@
 - OddsPath intervals hold the threshold fixed; threshold-selection variance is not included.
 - Missense only. Nonsense and splice variants, where SGE is strongest, are not scored.
 - One run, one random seed. The fold split varies the T1 thresholds by up to 0.29 score units
-  for MSH2 (fold thresholds -0.774 to -0.484); results with other seeds were not computed.
+  in the main analyses (MSH2, fold thresholds -0.774 to -0.484) and by 1.95 in MSH2 S1 (-2.254
+  to -0.3075); results with other seeds were not computed.
 - ClinVar access used NCBI's FTP service because the HTTPS mirror's robots.txt disallows
   automated clients; see data_sources.md.
 - `workflow/envs/analysis.yaml` pins the same versions as `pyproject.toml` for `--use-conda`, but

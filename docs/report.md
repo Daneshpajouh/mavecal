@@ -93,7 +93,7 @@ Out-of-fold logistic probabilities (reliability plots in `results/figures/`):
 
 Slopes below 1 mean the out-of-fold probabilities are too extreme; BRCA1 HDR (slope 0.75, 47
 controls) is the clearest case. These probabilities describe the ClinVar control set, whose
-pathogenic fraction (66% to 98%) is far above any clinical prior, so they are not posterior
+pathogenic fraction (66% to 96% in the five calibrated sets) is far above any clinical prior, so they are not posterior
 probabilities of pathogenicity. PTEN phosphatase has no calibration because cross-fitting
 needs 5 benign controls.
 
@@ -116,7 +116,8 @@ Cells read AUC (95% interval; pathogenic/benign). No interval where a class has 
 Every score set that can be scored on 2018 labels has a lower point AUC on them, though each
 2018 interval overlaps the main one. The conservative evidence strength drops for three of the
 four: BRCA1 SGE abnormal from PS3_moderate to PS3_supporting and normal from BS3 to
-BS3_moderate; TP53 abnormal from PS3_moderate to indeterminate; MSH2 from moderate to
+BS3_moderate; TP53 abnormal from PS3_moderate to indeterminate and normal from BS3_moderate
+to BS3_supporting; MSH2 from moderate to
 supporting on both sides. BRCA1 HDR moves both ways: its abnormal side rises from
 PS3_supporting to PS3_moderate (11 pathogenic and 12 benign controls) and its normal side drops
 from BS3_supporting to indeterminate. The S4 rebuild shows no drop for
