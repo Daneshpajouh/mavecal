@@ -20,6 +20,8 @@ TIMEOUT_SECONDS = 300
 THREE_LETTER = re.compile(r"^p\.([A-Z][a-z]{2})(\d+)([A-Z][a-z]{2})$")
 GENOMIC_SNV = re.compile(r"^(NC_0000(\d{2}))\.\d+:g\.(\d+)([ACGT])>([ACGT])$")
 TRANSCRIPT_C = re.compile(r"^(N[MR]_\d+)\.\d+:(c\.\S+)$")
+# ClinVar names the sex chromosomes X and Y, not 23 and 24.
+CHROM_NAME = {"23": "X", "24": "Y"}
 
 
 @dataclass(frozen=True)
@@ -101,7 +103,7 @@ def nucleotide_keys(scores: pd.DataFrame) -> pd.DataFrame:
             _, chrom, pos, ref, alt = gm.groups()
             rows.append(
                 {
-                    "chrom": str(int(chrom)),
+                    "chrom": CHROM_NAME.get(str(int(chrom)), str(int(chrom))),
                     "pos": int(pos),
                     "ref": ref,
                     "alt": alt,

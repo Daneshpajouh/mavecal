@@ -145,3 +145,18 @@ def test_match_nucleotide_averages_rows_for_one_allele() -> None:
     assert len(out) == 1
     assert out.loc[0, "score"] == -1.0
     assert out.loc[0, "label"] == "P"
+
+
+def test_nucleotide_keys_name_sex_chromosomes_as_clinvar_does() -> None:
+    scores = pd.DataFrame(
+        {
+            "scores.score": [0.5, 0.7, 0.9],
+            "hgvs_nt": [None, None, None],
+            "mavedb.post_mapped_hgvs_g": [
+                "NC_000023.11:g.154030912G>A",
+                "NC_000024.10:g.2787000C>T",
+                "NC_000002.12:g.47403000G>A",
+            ],
+        }
+    )
+    assert list(mavedb.nucleotide_keys(scores)["chrom"]) == ["X", "Y", "2"]
