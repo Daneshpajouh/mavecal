@@ -33,6 +33,7 @@ occur in the 2026-10-19 run.
   of the docs.
 - The README's report upload recipe takes the release tag from the checkout instead of naming
   v2.0.0; a docs test checks that the recipe names no fixed version.
+- The action pinning test also reads .yaml workflow files, which GitHub runs as well as .yml.
 
 ## 2.0.0 (2026-10-19)
 
