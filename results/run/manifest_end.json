@@ -1,12 +1,12 @@
 {
  "status": "success",
- "finished_utc": "2026-10-19T20:48:52+00:00",
- "duration_seconds": 73.0,
- "git_commit": "8262a1499aef767d672a4b81e4eaa13a2655149f",
+ "finished_utc": "2026-10-21T13:00:21+00:00",
+ "duration_seconds": 7.7,
+ "git_commit": "94765fcc554f1a2d02f97e33d08b193e338e17e1",
  "summary_table_sha256": "b4d427f9d4cb2838e825b5bfd0038c0f914657094133cc613dd3daddbbfd7ffd",
  "steps": {
-  "done": 73,
-  "total": 73
+  "done": 15,
+  "total": 15
  },
  "outputs": [
   {
@@ -17,7 +17,7 @@
   {
    "path": "results/figures/auc_forest.svg",
    "bytes": 146189,
-   "sha256": "991a65b8b4f2d573a9c32b300b6576fb0440e63a0be727455b1db405582b7e14"
+   "sha256": "ff65d137e12ea559447a8f4dab8482215e450aa0167831e93d8482a3d426c762"
   },
   {
    "path": "results/figures/brca1_hdr.png",

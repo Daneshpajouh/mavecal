@@ -1,12 +1,12 @@
 {
- "started_utc": "2026-10-19T20:47:39+00:00",
- "started_epoch": 1792442859.764715,
- "git_commit": "8262a1499aef767d672a4b81e4eaa13a2655149f",
+ "started_utc": "2026-10-21T13:00:13+00:00",
+ "started_epoch": 1792587613.478674,
+ "git_commit": "94765fcc554f1a2d02f97e33d08b193e338e17e1",
  "git_uncommitted_changes": false,
  "analysis_plan": {
   "path": "docs/analysis_plan.md",
-  "bytes": 8053,
-  "sha256": "cdfde3711b86a918a4c91393f87ae2abc98e10316c7cacb63a6d1ba7e77b1bb7"
+  "bytes": 7969,
+  "sha256": "30246cf38de8f2acfcea9dc5ab54dd85f73c6dcf03d48680e71ad055ca7c87b6"
  },
  "versions": {
   "python": "3.13.9",
@@ -17,7 +17,7 @@
   "scipy": "1.18.1",
   "matplotlib": "3.11.2",
   "requests": "2.34.2",
-  "mavecal": "1.0.0"
+  "mavecal": "2.0.0"
  },
  "config": {
   "data_dir": "data",
@@ -72,21 +72,6 @@
  },
  "inputs": [
   {
-   "path": "clinvar_releases/variant_summary_2026-10.txt.gz",
-   "bytes": 450727547,
-   "sha256": "a6a58df4d9049c9187a79a8fb4e70f1f3b5550e1708c6c74b7be0b268f5032da"
-  },
-  {
-   "path": "clinvar_releases/submission_summary_2026-10.txt.gz",
-   "bytes": 394172714,
-   "sha256": "c93758c972fbeb958b49aa560a374bdaf5c57cc4f159644a19bed88200a870ac"
-  },
-  {
-   "path": "clinvar_releases/variant_summary_2025-10.txt.gz",
-   "bytes": 384432958,
-   "sha256": "b99920190c2eb00382cf9ec154442bb83fe5a14a397f93e6db22c8fda094fc77"
-  },
-  {
    "path": "clinvar_releases/variant_summary_2018-01.txt.gz",
    "bytes": 25120853,
    "sha256": "9e81416ea144a1c05eec15198cc42d15ab808193a906a3ff3c67d78dd0e17fb1"
@@ -122,5 +107,9 @@
    "sha256": "6625594063e5812708e50da0ce5bd52ec4368c9b379e778d03a8fe3a24875a03"
   }
  ],
- "inputs_missing": []
+ "inputs_missing": [
+  "clinvar_releases/variant_summary_2026-10.txt.gz",
+  "clinvar_releases/submission_summary_2026-10.txt.gz",
+  "clinvar_releases/variant_summary_2025-10.txt.gz"
+ ]
 }
