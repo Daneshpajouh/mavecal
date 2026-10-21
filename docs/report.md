@@ -126,6 +126,19 @@ from BS3_supporting to indeterminate. The S4 rebuild shows no drop for
 BRCA1 SGE (0.984) and a drop for MSH2 (0.839, 8 benign controls); it leaves TP53 with 3 benign
 controls and PTEN with none.
 
+S4 was rerun on 2026-10-21 under amendment 4, which counts distinct submitters, not submissions, for
+two stars. On these submissions no variant changes its label or its stars at any cutoff, so every
+S4 number is unchanged. Cells read AUC (pathogenic/benign).
+
+| score set | S4 before amendment 4 (1d7daf3) | S4 after amendment 4 | variants with two stars at the cutoff (before, after) |
+|---|---|---|---|
+| brca1_sge | 0.984 (39/16) | 0.984 (39/16) | 2230, 2230 (cutoff 2018-09-12; labels changed: 0) |
+| brca1_hdr | 0.818 (11/6) | 0.818 (11/6) | 2230, 2230 (cutoff 2018-09-12; labels changed: 0) |
+| tp53_nutlin | 1.000 (12/3) | 1.000 (12/3) | 2232, 2232 (cutoff 2018-09-17; labels changed: 0) |
+| pten_phosphatase | no AUC (5/0) | no AUC (5/0) | 2146, 2146 (cutoff 2018-04-26; labels changed: 0) |
+| pten_abundance | no AUC (2/0) | no AUC (2/0) | 2162, 2162 (cutoff 2018-05-21; labels changed: 0) |
+| msh2_lof | 0.839 (49/8) | 0.839 (49/8) | 2781, 2781 (cutoff 2020-12-23; labels changed: 0) |
+
 Two explanations fit and this design cannot separate them. Some current labels may rest on the
 assays (ClinGen expert panels for these genes use functional data), which inflates the main
 analysis. The 2018 label sets are also smaller, older and include 1-star records, which adds

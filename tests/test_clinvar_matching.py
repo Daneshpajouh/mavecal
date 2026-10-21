@@ -71,6 +71,7 @@ def test_labels_before_cutoff() -> None:
             ],
             "DateLastEvaluated": ["Jan 01, 2017", "Feb 01, 2017", "Jan 01, 2017", "Jan 01, 2017", "Jan 01, 2020", "-"],
             "ReviewStatus": ["criteria provided, single submitter"] * 4 + ["reviewed by expert panel"] * 2,
+            "Submitter": ["Lab A", "Lab B", "Lab A", "Lab B", "Panel", "Panel"],
         }
     )
     out = clinvar.labels_before(sub, date(2018, 1, 1)).set_index("variation_id")
@@ -78,6 +79,23 @@ def test_labels_before_cutoff() -> None:
     assert "2" not in out.index  # benign and uncertain before the cutoff conflict
     assert "3" not in out.index  # evaluated after the cutoff
     assert "4" not in out.index  # no date
+
+
+def test_labels_before_counts_submitters_not_submissions() -> None:
+    # ClinVar gives two stars for agreeing criteria-provided assertions from two or more submitters.
+    sub = pd.DataFrame(
+        {
+            "variation_id": ["1", "1", "2", "2"],
+            "ClinicalSignificance": ["Pathogenic", "Pathogenic", "Pathogenic", "Likely pathogenic"],
+            "DateLastEvaluated": ["Jan 01, 2017", "Mar 01, 2017", "Jan 01, 2017", "Mar 01, 2017"],
+            "ReviewStatus": ["criteria provided, single submitter"] * 4,
+            "Submitter": ["Lab A", "Lab A", "Lab A", "Lab B"],
+        }
+    )
+    out = clinvar.labels_before(sub, date(2018, 1, 1)).set_index("variation_id")
+    assert out.loc["1", "stars"] == 1  # one lab, two submissions
+    assert out.loc["2", "stars"] == 2
+    assert out["n_submitters"].tolist() == [1, 2]
 
 
 def test_protein_keys_average_duplicates_and_filter_accession() -> None:

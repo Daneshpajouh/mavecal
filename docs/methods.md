@@ -33,6 +33,8 @@ carry the same allele are averaged, as for protein changes.
 Labels for S4 come from `submission_summary`: submissions with assertion criteria whose
 `DateLastEvaluated` is before the assay's first online date. A variant keeps a label only if
 all such submissions agree; uncertain significance among them removes it.
+Two stars need two or more distinct submitters among them, not two submissions from one
+submitter (amendment 4).
 
 ## Statistics
 

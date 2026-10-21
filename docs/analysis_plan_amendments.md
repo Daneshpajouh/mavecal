@@ -13,3 +13,7 @@ The plan says one misclassified control is added to each readout set, as Brnich 
 ## 3. Number of reliability bins (2026-10-19)
 
 Plan item 6 asks for a reliability plot with 10 quantile bins. Since the package was first committed (58bbb7d) the code (`reliability_bins` in `src/mavecal/calibration.py`) has used 10 bins only when a control set has at least 100 controls, and otherwise one bin per 10 controls, with at least 2. This amendment records the code's rule as the one used. For the main analysis that means 4 bins for BRCA1 HDR (47 controls), 10 for BRCA1 SGE, TP53, MSH2 and PTEN abundance, and none for PTEN phosphatase, which is not cross-fitted. No published number changes, because the code was not changed.
+
+## 4. Two stars in S4 count submitters (2026-10-21)
+
+The plan approximates two stars in S4 as two or more agreeing criteria-provided submissions. ClinVar's two-star status needs two or more submitters, so one submitter that submitted twice was counted as two. From this amendment S4 counts distinct submitters. S4 was rerun; the report gives the old and new numbers side by side.
